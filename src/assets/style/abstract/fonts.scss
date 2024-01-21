@@ -1,0 +1,9 @@
+@import 'variables.scss';
+
+@font-face {
+  font-family: $secondry-font;
+  src: local("29LT Ada Flat Bold"),local("29LTAdaFlat-Bold"),url(../../fonts/29LTAdaFlat-Bold.ttf) format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap
+}
