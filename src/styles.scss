@@ -52,4 +52,6 @@ html,
 body {
   height: 100%;
   font-family: var(--primary-font);
+  background: var(--bg-color);
+  direction: rtl;
 }

@@ -1,7 +1,50 @@
-p{
-  position: relative;
-  top: 0;
-  height: 100px;
-  width: 100%;
-  background: red;
+@import 'common';
+
+@include MobileScreen {
+  :host {
+    header {
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--c-stroke-gray);
+
+      .logo {
+        img {
+          width: 116px;
+          height: 50px;
+        }
+      }
+
+      .add__product {
+        border: 1px solid var(--c-action);
+        padding: 0.6rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 48.7%;
+        gap: 0.5rem;
+        border-radius: 10px;
+        span {
+          @include textStyle(16px,18px,var(--primary-font),var(--c-font-1), 400)
+        }
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}
+
+
+@include tabletScreen{
+  :host{
+    header{
+      .add__product{
+        width:25.7%;
+      }
+    }
+  }
 }
