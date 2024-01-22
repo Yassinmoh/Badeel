@@ -1,3 +1,18 @@
-//fonts
-$secondry-font: '29LT Ada Flat';
-$primary-font: 'Rubik', sans-serif;
+:root{
+  //fonts
+  --secondry-font: '29LT Ada Flat';
+  --primary-font: 'Rubik', sans-serif;
+
+  //colors
+  --bg-color:#1a1a1a;
+  --c-font-1:#efece0;
+  --c-font-2:#9f9d98;
+  --c-green:#9bc880;
+  --c-green-active:#07f21e;
+  --c-gray-1:#202020;
+  --c-gray-2:#313131;
+  --c-gray-3:#393939;
+  --c-gray-4:#494945;
+  --c-action:#ec543f;
+  --c-stroke-gray:#403f36;
+}
