@@ -1,4 +1,56 @@
-p{
-  position: fixed;
-  bottom: 0;
+@import 'common';
+
+@include MobileScreen {
+  :host {
+    footer{
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      .container{
+        width: 90%;
+        margin: 0 auto;
+        padding: 2rem 0.5rem;
+        text-align: center;
+        @include textStyle(16px,21px,var(--primary-font),var(--c-font-1), 500);
+        .stroke{
+          height: 2px;
+          width: 60%;
+          background: var(--c-font-1);
+          margin: 2rem auto;
+        }
+      }
+    }
+  }
+}
+
+@include tabletScreen {
+  :host {
+    footer{
+      .container{
+        width: 80%;
+      }
+    }
+  }
+}
+
+
+@include MediumDesktopScreen {
+  :host{
+    footer{
+      .container{
+        width: 60%;
+      }
+    }
+  }
+}
+
+
+@include LargeDesktopScreen {
+  :host{
+    footer{
+      .container{
+        width: 50%;
+      }
+    }
+  }
 }
