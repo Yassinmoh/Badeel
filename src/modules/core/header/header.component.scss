@@ -48,3 +48,25 @@
     }
   }
 }
+
+
+@include MediumDesktopScreen {
+  :host{
+    header{
+      .add__product{
+        width:14%;
+      }
+    }
+  }
+}
+
+
+@include LargeDesktopScreen {
+  :host{
+    header{
+      .add__product{
+        width:10%;
+      }
+    }
+  }
+}
