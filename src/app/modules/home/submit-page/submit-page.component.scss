@@ -1,0 +1,136 @@
+@import 'common';
+
+@include MobileScreen {
+  :host {
+    section {
+      width: 100%;
+      color: #fff;
+
+      .container {
+        width: 95%;
+        margin: 0 auto;
+        padding: 1rem;
+
+        .title {
+          @include textStyle(35px, 21px, var(--secondry-font), var(--c-font-1), 600);
+          font-family: "29LT Ada Flat", system-ui, Avenir, Helvetica, Arial, sans-serif !important;
+          margin: 3rem auto 1rem auto;
+          text-align: center;
+        }
+
+        p {
+          @include textStyle(16px, 1.5, var(--primary-font), var(--c-font-1), 400);
+          text-align: center;
+        }
+
+        .form_box {
+          margin-top: 3.5rem;
+
+          form {
+            label {
+              @include textStyle(19px, 1.5, var(--primary-font), var(--c-font-1), 400);
+            }
+
+            fieldset {
+              display: flex;
+              border: 0;
+              gap: 2rem;
+
+              label {
+                margin-right: 0.5rem;
+                @include textStyle(19px, 1.5, var(--primary-font), var(--c-font-1), 400);
+              }
+
+              input {
+                accent-color: var(--c-input-floating-bg);
+              }
+            }
+
+            .form__filed {
+              margin-top: 20px;
+
+              label {
+                display: block;
+              }
+
+              input,
+              textarea {
+                @include FormInput;
+
+                &:hover {
+                  transition: background-color 0.2s ease-in-out;
+                  background-color: var(--c-input-floating-bg)
+                }
+              }
+            }
+
+            button {
+              display: block;
+              margin: 1rem auto;
+              width: 60%;
+              padding: 9px 0px;
+              outline: 0;
+              background: transparent;
+              border: 1px solid var(--c-stroke-gray);
+              border-radius: 12px;
+              @include textStyle(18px, 1.5, var(--primary-font), var(--c-font-1), 400);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include tabletScreen {
+  :host {
+    section {
+      .container {
+        width: 70%;
+      }
+    }
+  }
+}
+
+
+@include DesktopScreen {
+  :host {
+    section {
+      .container {
+        width: 70%;
+      }
+    }
+  }
+}
+
+
+@include MediumDesktopScreen {
+  :host {
+    section {
+      .container {
+        width: 45%;
+      }
+    }
+  }
+}
+
+
+@include LargeDesktopScreen {
+  :host {
+    section {
+      .container {
+        width: 36%;
+        max-width: 600px;
+
+        .title {
+          font-size: 64px;
+          margin: 3rem auto 2rem auto;
+        }
+
+        p {
+          margin-top: 3rem;
+        }
+      }
+    }
+  }
+}

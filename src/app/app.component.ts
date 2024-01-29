@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { CoreModule } from '../modules/core/core.module';
-import { SharedModule } from '../modules/shared/shared.module';
+import { CoreModule } from './modules/core/core.module';
+import { SharedModule } from './modules/shared/shared.module';
 
 @Component({
   selector: 'app-root',

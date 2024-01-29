@@ -50,6 +50,20 @@
 }
 
 
+@include DesktopScreen{
+  :host{
+    header{
+      .add__product{
+        &:hover{
+          background: var(--c-action-2);
+          cursor: pointer;
+          transition: all 0.2s ease-in-out;
+        }
+      }
+    }
+  }
+}
+
 @include MediumDesktopScreen {
   :host{
     header{

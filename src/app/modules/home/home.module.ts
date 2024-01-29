@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { CoreModule } from '../core/core.module';
+import { environment } from '../../../environment/environment';
 
 
 @NgModule({
@@ -10,7 +11,7 @@ import { CoreModule } from '../core/core.module';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    CoreModule
+    CoreModule,
   ]
 })
 export class HomeModule { }

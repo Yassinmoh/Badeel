@@ -1,0 +1,38 @@
+<section>
+  <div class="container">
+    <h2 class="title">أضِف مُنْتَج لِبَديل</h2>
+    <p>برجاء العلم ان تقديمك لهذا الإستبيان لا يضمن أن يتم إدراج المُنتج او الشركة التي قمت بإضافتها. فريق بديل يقوم
+      بمراجعة جميع الأدلة بدرجة عالية من الإهتمام ومن الممكن أن يكون الدليل المُقدَّم غير كافي. تقع على عاتُقنا مسؤولية
+      كبيرة أمام اللُّه ومستخدمين بديل ولذلك نتوخى الحذر قبل إضافة أي مُنتَج. شكراً لتفهمِكم.
+    </p>
+
+    <div class="form_box">
+      <form [formGroup]="productForm" (ngSubmit)="onSubmit($event)">
+        <label for="status">حالة المنتج:</label>
+        <fieldset id="status">
+          <div *ngFor="let option of [{arName:'داعم',EnName:'boycott'},{arName:'بديل',EnName:'alternative'},{arName:'غير متأكد',EnName:'unsure'}]">
+            <input type="radio" [id]="option.EnName" [value]="option.EnName" formControlName="status">
+            <label [for]="option.EnName">{{ option.arName }}</label>
+          </div>
+        </fieldset>
+        <div class="form__filed">
+          <label for="">إسم المنتج بالعربية :</label>
+          <input type="text" formControlName="productArName">
+        </div>
+        <div class="form__filed">
+          <label for="">إسم المنتج بالإنجليزية :</label>
+          <input type="text" formControlName="productEnName">
+        </div>
+        <div class="form__filed">
+          <label for=""> الشركةالمصنعة :</label>
+          <input type="text" formControlName="company">
+        </div>
+        <div class="form__filed">
+          <label for=""> الدليل :</label>
+          <textarea formControlName="details" cols="30" rows="2"></textarea>
+        </div>
+        <button type="submit">إرسال</button>
+      </form>
+    </div>
+  </div>
+</section>
