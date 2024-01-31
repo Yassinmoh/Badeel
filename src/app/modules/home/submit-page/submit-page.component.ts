@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { CommonModule } from '@angular/common';
 import { AngularFireModule, FirebaseApp } from '@angular/fire/compat';
 import { Firestore } from 'firebase/firestore/lite';
+import { ProductService } from '../../core/Services/product.service';
 
 @Component({
   selector: 'app-submit-page',
@@ -19,11 +20,12 @@ export class SubmitPageComponent implements OnInit {
 
   productForm!: FormGroup;
 
-  constructor(public firestore: AngularFirestore) {}
+  constructor(public firestore: AngularFirestore, private productsService: ProductService) { }
 
   ngOnInit(): void {
     this.productForm = this.fb.group({
       status: [''],
+      id: [],
       productArName: [''],
       productEnName: [''],
       company: [''],
@@ -34,11 +36,14 @@ export class SubmitPageComponent implements OnInit {
   onSubmit(event: Event): void {
     event.preventDefault();
     if (this.productForm.valid) {
-      this.firestore.collection('products').add(this.productForm.value).then(() => {
-        console.log('Product added!');
-      }).catch((error: any) => {
-        console.error('Error adding product: ', error);
-      });
+      const newId = Math.floor(1000 + Math.random() * 9000);
+      this.productForm.patchValue({ id: newId });
+      try {
+        this.productsService.addProduct(this.productForm.value)
+        console.log("Product added successfully");
+      } catch (error) {
+        console.log("something went wrong", error);
+      }
     } else {
       console.error('Invalid form');
     }

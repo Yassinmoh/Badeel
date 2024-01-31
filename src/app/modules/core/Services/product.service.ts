@@ -1,23 +1,47 @@
 import { Injectable } from '@angular/core';
-import {AngularFireDatabase,AngularFireList,AngularFireObject} from '@angular/fire/compat/database';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Product } from '../model/Product';
+import { Observable } from 'rxjs/internal/Observable';
+import { map } from 'rxjs';
+
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  productsRef!: AngularFireList<any>;
-  productRef!: AngularFireObject<any>;
-  constructor(private db: AngularFireDatabase) {}
+  constructor(private firestore: AngularFirestore) {}
 
-  AddStudent(product: Product) {
-    this.productsRef.push({
-      status: product.status,
-      productArName: product.productArName,
-      productEnName: product.productEnName,
-      company: product.company,
-      details: product.details,
-      link: product.link,
-    });
-  }
+// Add product
+addProduct(productData: Product) {
+  return this.firestore.collection('products').add(productData);
+}
+
+// Fetch single product
+getProduct(productId: string): Observable<Product> {
+  const productRef = this.firestore.collection('products').doc(productId);
+  return productRef.get().pipe(
+    map((productDoc) => (productDoc.exists ? productDoc.data() as Product:{}))
+  );
+}
+
+// Fetch product list
+getProducts(): Observable<Product[]> {
+  return this.firestore.collection('products').get().pipe(
+    map((productsSnapshot) => productsSnapshot.docs.map((doc) => doc.data() as Product))
+  );
+}
+
+// Update product
+updateProduct(productId: string, productData: Product): Promise<void> {
+  const productRef = this.firestore.collection('products').doc(productId);
+  return productRef.update(productData);
+}
+
+// Delete product
+deleteProduct(productId: string): Promise<void> {
+  const productRef = this.firestore.collection('products').doc(productId);
+  return productRef.delete();
+}
 }
