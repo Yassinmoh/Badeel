@@ -25,6 +25,17 @@
   }
 }
 
+.error-input{
+  @include textStyle(15px, 21px, var(--secondry-font), var(--c-error), 400);
+  position: absolute;
+  bottom: -24px;
+  right: 0%;
+}
+
+.error-border{
+  border: 1px solid var(--c-error) !important;
+}
+
 
 
 

@@ -1,10 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { CommonModule } from '@angular/common';
-import { AngularFireModule, FirebaseApp } from '@angular/fire/compat';
-import { Firestore } from 'firebase/firestore/lite';
 import { ProductService } from '../../core/Services/product.service';
 
 @Component({
@@ -16,21 +13,22 @@ import { ProductService } from '../../core/Services/product.service';
 })
 export class SubmitPageComponent implements OnInit {
   private fb = inject(FormBuilder);
-  item$!: Observable<any[]>;
-
   productForm!: FormGroup;
-
+  statusInput: string = ''
   constructor(public firestore: AngularFirestore, private productsService: ProductService) { }
 
   ngOnInit(): void {
     this.productForm = this.fb.group({
-      status: [''],
+      status: ['',[Validators.required]],
       id: [],
-      productArName: [''],
-      productEnName: [''],
-      company: [''],
-      details: [''],
+      productArName: ['',[Validators.required, Validators.minLength(3)]],
+      productEnName: ['',[Validators.required, Validators.minLength(3)]],
+      company: ['',[Validators.required, Validators.minLength(3)]],
+      details: ['',[Validators.required, Validators.minLength(3)]],
     });
+
+
+    this.productForm.get('status')?.valueChanges.subscribe(value => this.statusInput = value);
   }
 
   onSubmit(event: Event): void {

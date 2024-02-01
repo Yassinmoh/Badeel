@@ -47,7 +47,8 @@
             }
 
             .form__filed {
-              margin-top: 20px;
+              margin-top: 25px;
+              position: relative;
 
               label {
                 display: block;
@@ -60,6 +61,10 @@
                 &:hover {
                   transition: background-color 0.2s ease-in-out;
                   background-color: var(--c-input-floating-bg)
+                }
+
+                &::placeholder{
+                  font-size: 15px;
                 }
               }
             }

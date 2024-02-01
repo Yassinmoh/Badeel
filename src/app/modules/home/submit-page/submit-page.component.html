@@ -6,6 +6,14 @@
       كبيرة أمام اللُّه ومستخدمين بديل ولذلك نتوخى الحذر قبل إضافة أي مُنتَج. شكراً لتفهمِكم.
     </p>
 
+    <div>
+      @if (true) {
+        <s></s>
+      } @else {
+        <span></span>
+      }
+    </div>
+
     <div class="form_box">
       <form [formGroup]="productForm" (ngSubmit)="onSubmit($event)">
         <label for="status">حالة المنتج:</label>
@@ -17,20 +25,36 @@
         </fieldset>
         <div class="form__filed">
           <label for="">إسم المنتج بالعربية :</label>
-          <input type="text" formControlName="productArName">
+          <input type="text" formControlName="productArName" placeholder="مثال: كوكاكولا" [ngClass]="productForm.get('productArName')?.hasError('minlength') ? 'error-border' : ''">
+          <span class="error-input" *ngIf="productForm.get('productArName')?.hasError('minlength') && productForm.get('productArName')?.touched">
+            الحد الأدنى لإسم المنتج 3 أحرف
+          </span>
         </div>
         <div class="form__filed">
           <label for="">إسم المنتج بالإنجليزية :</label>
-          <input type="text" formControlName="productEnName">
+          <input type="text" formControlName="productEnName" placeholder="مثال: Cocacola" [ngClass]="productForm.get('productEnName')?.hasError('minlength') ? 'error-border' : ''">
+          <span class="error-input" *ngIf="productForm.get('productEnName')?.hasError('minlength') && productForm.get('productEnName')?.touched">
+            الحد الأدنى لإسم المنتج 3 أحرف
+          </span>
         </div>
         <div class="form__filed">
           <label for=""> الشركةالمصنعة :</label>
-          <input type="text" formControlName="company">
+          <input type="text" formControlName="company" placeholder="الشركة المصنعة أو المالكة" [ngClass]="productForm.get('company')?.hasError('minlength') ? 'error-border' : ''">
+          <span class="error-input" *ngIf="productForm.get('company')?.hasError('minlength') && productForm.get('company')?.touched">
+          الحد الأدني لإسم الشركة 3 أحرف
+          </span>
         </div>
-        <div class="form__filed">
-          <label for=""> الدليل :</label>
-          <textarea formControlName="details" cols="30" rows="2"></textarea>
-        </div>
+        @if (statusInput === 'boycott') {
+          <div class="form__filed">
+            <label for=""> الدليل :</label>
+            <textarea formControlName="details" cols="30" rows="2"></textarea>
+          </div>
+        } @else {
+          <div class="form__filed">
+            <label for=""> التفاصيل :</label>
+            <textarea formControlName="details" cols="30" rows="2"></textarea>
+          </div>
+        }
         <input type="hidden" formControlName="id">
         <button type="submit">إرسال</button>
       </form>
