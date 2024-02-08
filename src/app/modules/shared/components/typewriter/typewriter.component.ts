@@ -40,9 +40,9 @@ export class TypewriterComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    setTimeout(() => {
+
       this.initializeTyped();
-    }, 0);
+
   }
 
   ngOnDestroy() {

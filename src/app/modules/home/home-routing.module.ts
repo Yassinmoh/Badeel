@@ -2,15 +2,20 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from '../core/main-layout/main-layout.component';
 import { SubmitPageComponent } from './submit-page/submit-page.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
   {
-    path:'',
-    component:MainLayoutComponent,
-    children:[
+    path: '',
+    component: MainLayoutComponent,
+    children: [
       {
-        path:'submit',
-        component:SubmitPageComponent
+        path: '',
+        component: HomePageComponent
+      },
+      {
+        path: 'submit',
+        component: SubmitPageComponent
       }
     ]
   },
@@ -21,9 +26,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class HomeRoutingModule {
-  constructor(){
-    console.log("Home routing");
-
-  }
- }
+export class HomeRoutingModule {}

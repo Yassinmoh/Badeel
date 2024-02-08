@@ -8,9 +8,9 @@
 
     <div>
       @if (true) {
-        <s></s>
+      <s></s>
       } @else {
-        <span></span>
+      <span></span>
       }
     </div>
 
@@ -18,43 +18,44 @@
       <form [formGroup]="productForm" (ngSubmit)="onSubmit($event)">
         <label for="status">حالة المنتج:</label>
         <fieldset id="status">
-          <div *ngFor="let option of [{arName:'داعم',EnName:'boycott'},{arName:'بديل',EnName:'alternative'},{arName:'غير متأكد',EnName:'unsure'}]">
+          <div
+            *ngFor="let option of [{arName:'داعم',EnName:'boycott'},{arName:'بديل',EnName:'alternative'},{arName:'غير متأكد',EnName:'unsure'}]">
             <input type="radio" [id]="option.EnName" [value]="option.EnName" formControlName="status">
             <label [for]="option.EnName">{{ option.arName }}</label>
           </div>
         </fieldset>
         <div class="form__filed">
           <label for="">إسم المنتج بالعربية :</label>
-          <input type="text" formControlName="productArName" placeholder="مثال: كوكاكولا" [ngClass]="productForm.get('productArName')?.hasError('minlength') ? 'error-border' : ''">
-          <span class="error-input" *ngIf="productForm.get('productArName')?.hasError('minlength') && productForm.get('productArName')?.touched">
+          <input type="text" formControlName="productArName" placeholder="مثال: كوكاكولا"
+            [ngClass]="productForm.get('productArName')?.hasError('minlength') ? 'error-border' : ''">
+          <span class="error-input" *ngIf="productForm.get('productArName')?.hasError('minlength')">
             الحد الأدنى لإسم المنتج 3 أحرف
           </span>
         </div>
         <div class="form__filed">
           <label for="">إسم المنتج بالإنجليزية :</label>
-          <input type="text" formControlName="productEnName" placeholder="مثال: Cocacola" [ngClass]="productForm.get('productEnName')?.hasError('minlength') ? 'error-border' : ''">
-          <span class="error-input" *ngIf="productForm.get('productEnName')?.hasError('minlength') && productForm.get('productEnName')?.touched">
+          <input type="text" formControlName="productEnName" placeholder="مثال: Cocacola"
+            [ngClass]="productForm.get('productEnName')?.hasError('minlength') ? 'error-border' : ''">
+          <span class="error-input" *ngIf="productForm.get('productEnName')?.hasError('minlength') ">
             الحد الأدنى لإسم المنتج 3 أحرف
           </span>
         </div>
         <div class="form__filed">
           <label for=""> الشركةالمصنعة :</label>
-          <input type="text" formControlName="company" placeholder="الشركة المصنعة أو المالكة" [ngClass]="productForm.get('company')?.hasError('minlength') ? 'error-border' : ''">
-          <span class="error-input" *ngIf="productForm.get('company')?.hasError('minlength') && productForm.get('company')?.touched">
-          الحد الأدني لإسم الشركة 3 أحرف
+          <input type="text" formControlName="company" placeholder="الشركة المصنعة أو المالكة"
+            [ngClass]="productForm.get('company')?.hasError('minlength') ? 'error-border' : ''">
+          <span class="error-input" *ngIf="productForm.get('company')?.hasError('minlength') ">
+            الحد الأدني لإسم الشركة 3 أحرف
           </span>
         </div>
-        @if (statusInput === 'boycott') {
-          <div class="form__filed">
-            <label for=""> الدليل :</label>
-            <textarea formControlName="details" cols="30" rows="2"></textarea>
-          </div>
-        } @else {
-          <div class="form__filed">
-            <label for=""> التفاصيل :</label>
-            <textarea formControlName="details" cols="30" rows="2"></textarea>
-          </div>
-        }
+        <div class="form__filed">
+          @if (statusInput === 'boycott') {
+          <label for=""> الدليل :</label>
+          } @else {
+          <label for=""> التفاصيل :</label>
+          }
+          <textarea formControlName="details" cols="30" rows="2"></textarea>
+        </div>
         <input type="hidden" formControlName="id">
         <button type="submit">إرسال</button>
       </form>

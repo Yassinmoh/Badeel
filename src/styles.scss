@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import './assets/style/general/common.scss';
-
+@import 'ngx-toastr/toastr';
 
 * {
   margin: 0;
@@ -54,4 +54,16 @@ body {
   font-family: var(--primary-font);
   background: var(--bg-color);
   direction: rtl;
+}
+
+
+// Toast
+.toast-success,
+.toast-error{
+  color: #fff;
+  font-family: var(--primary-font);
+}
+
+.toast-error{
+  background-color: var(--c-error) !important;
 }
