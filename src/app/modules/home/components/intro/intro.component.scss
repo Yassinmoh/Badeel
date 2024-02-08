@@ -1,0 +1,14 @@
+@import 'common';
+.intro{
+  position: relative;
+  height: 304px;
+
+  p{
+    @include textStyle(17px, 1.5, var(--primary-font), var(--c-font-1), 400);
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    top: 60%;
+    transform: translateY(-50%);
+  }
+}

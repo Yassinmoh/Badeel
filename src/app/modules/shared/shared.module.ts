@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TypewriterComponent } from './components/typewriter/typewriter.component';
+import { SearchComponent } from './components/search/search.component';
 
 
 
@@ -8,10 +9,12 @@ import { TypewriterComponent } from './components/typewriter/typewriter.componen
   declarations: [],
   imports: [
     CommonModule,
-    TypewriterComponent
+    TypewriterComponent,
+    SearchComponent
   ],
   exports:[
-    TypewriterComponent
+    TypewriterComponent,
+    SearchComponent
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,13 @@
+<div class="search-box">
+  <form>
+    <div class="form_body" #searchBody>
+      <div class="form__input">
+        <svg><use href="#search_icon"></use></svg>
+        <input type="text" placeholder="إبحث عن منتج أو شركة..." (blur)="onBlur()" (focus)="onFocus()">
+      </div>
+      <div class="form__btn">
+        <button type="submit">إبحث</button>
+      </div>
+    </div>
+  </form>
+</div>
