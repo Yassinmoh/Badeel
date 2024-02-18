@@ -1,9 +1,12 @@
+import { Category } from "./Category";
+
 export interface Product {
-  id?:number,
+  id?:number;
   status?: string;
   productArName?: string;
-  productEnName?: string
+  productEnName?: string;
   company?: string;
-  details?: string
+  details?: string;
   link?: string;
+  categories?: Category[];
 }

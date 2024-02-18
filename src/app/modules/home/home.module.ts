@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { HomeRoutingModule } from './home-routing.module';
 import { CoreModule } from '../core/core.module';
-import { environment } from '../../../environment/environment';
 
 
 @NgModule({
@@ -11,7 +9,7 @@ import { environment } from '../../../environment/environment';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    CoreModule,
+    CoreModule
   ]
 })
 export class HomeModule { }

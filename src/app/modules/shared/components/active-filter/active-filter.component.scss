@@ -1,0 +1,97 @@
+@import 'common';
+
+section {
+  position: relative;
+
+  margin: 2rem 0px;
+  padding: 0 1.6rem;
+
+  .filter_icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .text {
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--c-action);
+      width: fit-content;
+      padding: 0 1rem;
+      gap: 0.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+
+      span {
+        @include textStyle(17px, 1.5, var(--primary-font), var(--c-font-1), 600);
+      }
+
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    .icons {
+      visibility: hidden;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+
+      svg {
+        width: 24px;
+        height: 24px;
+        color: var(--c-gray-2);
+      }
+    }
+  }
+
+  .active__filter_tags {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin: 1.2rem 0;
+
+    .active__item {
+      height: 34px;
+      width: fit-content;
+      padding: 0 0.5rem;
+      background: var(--c-gray-2);
+      border: 1px solid var(--c-stroke-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9px;
+      gap: 0.5rem;
+      margin: 0.4rem;
+      span {
+        @include textStyle(16px, 1.5, var(--primary-font), var(--c-font-2), 400);
+
+        &.bold{
+          @include textStyle(16px, 1.5, var(--primary-font), var(--c-font-1), 700);
+        }
+      }
+
+      svg {
+        width: 12px;
+        height: 12px;
+        color: var(--c-action);
+      }
+    }
+  }
+}
+
+
+@include DesktopScreen {
+  :host {
+    section {
+      .filter_icons {
+        .icons {
+          visibility: visible;
+        }
+      }
+    }
+  }
+}
