@@ -43,6 +43,11 @@ section {
         width: 24px;
         height: 24px;
         color: var(--c-gray-2);
+        cursor: pointer;
+
+        &[aria-pressed="true"]{
+          color: var(--c-action);
+        }
       }
     }
   }

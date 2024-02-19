@@ -7,10 +7,10 @@
       <span>الترتيب والأقسام</span>
     </div>
     <div class="icons">
-      <svg>
+      <svg (click)="toggleClick($event,'table')" [attr.aria-pressed]="pressed === 'table'">
         <use href="#table_icon"></use>
       </svg>
-      <svg>
+      <svg (click)="toggleClick($event , 'grid')" [attr.aria-pressed]="pressed === 'grid'">
         <use href="#grid_icon"></use>
       </svg>
     </div>

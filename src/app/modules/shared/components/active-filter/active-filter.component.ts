@@ -9,9 +9,16 @@ import { PopupService } from '../../../core/Services/popup.service';
   styleUrl: './active-filter.component.scss'
 })
 export class ActiveFilterComponent {
-  popupService =inject(PopupService)
-
+  popupService = inject(PopupService)
+  pressed = '';
+  constructor() { }
   openFilterPopup() {
     this.popupService.openFilterPopup()
+  }
+
+  toggleClick(event: MouseEvent, type: string): void {
+    if (this.pressed !== type) {
+      this.pressed = type;
+    }
   }
 }
