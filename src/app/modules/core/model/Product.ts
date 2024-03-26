@@ -8,5 +8,6 @@ export interface Product {
   company?: string;
   details?: string;
   link?: string;
-  categories?: Category[];
+  category?: string;
+  subCategory?: string;
 }

@@ -67,6 +67,30 @@
                   font-size: 15px;
                 }
               }
+
+              &:is(.filed__two-row){
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1.5rem;
+
+                .row{
+                  width: 45%;
+                  select{
+                    width: 100%;
+                    @include FormInput;
+                    font-size: 15px;
+                    color:  var(--c-font-1);
+                    option{
+                      background-color: var(--c-gray-1);
+
+                      &:checked{
+                        background: var(--c-action);
+                      }
+                    }
+                  }
+                }
+              }
             }
 
             button {

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IntroComponent } from '../components/intro/intro.component';
-import { ActiveFilterComponent } from '../../shared/components/active-filter/active-filter.component';
+import { ActiveFilterComponent } from '../../../shared/components/active-filter/active-filter.component';
+import { IntroComponent } from '../../components/intro/intro.component';
 
 @Component({
   selector: 'app-home-page',
