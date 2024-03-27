@@ -7,7 +7,35 @@
         <svg (click)="closeFilterPopup()"><use href="#close-icon"></use></svg>
       </div>
     </div>
-    <div class="filter__content"></div>
+    <div class="filter__content">
+      <div class="category__section">
+        <div class="cat-col">
+          <h3 class="active">القسم</h3>
+          <select id="pet-select"
+            (change)="handleMainCategorySelection($event)">
+            <option value="no_select"> --اختر الفئة-- </option>
+            <option *ngFor="let category of categories"
+              [value]="category.catEnName">{{category.catArName}}</option>
+          </select>
+        </div>
+        <div class="subCat-col" *ngIf="showSubCategories" @fadeIn>
+          <h3>النوع</h3>
+          <div *ngFor="let sub of subCategories">
+            <input type="checkbox" [value]="sub"
+              (click)="handleMainCategorySelection($event)">
+            <label for>{{sub}}</label>
+          </div>
+        </div>
+      </div>
+      <div class="status__section">
+        <h3>الحالة</h3>
+        <div
+        *ngFor="let option of [{arName:'داعم',EnName:'boycott'},{arName:'بديل',EnName:'alternative'},{arName:'غير متأكد',EnName:'unsure'}]">
+        <input type="checkbox" [id]="option.EnName" [value]="option.EnName" >
+        <label [for]="option.EnName">{{ option.arName }}</label>
+      </div>
+      </div>
+    </div>
     <div class="filter__footer">
       <button type="submit">إعرض النتائج</button>
     </div>
