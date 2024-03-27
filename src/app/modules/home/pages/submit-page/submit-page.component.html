@@ -51,16 +51,16 @@
         <div class="form__filed filed__two-row">
           <div class="row">
             <label for=""> الفئة :</label>
-            <select name="category" id="pet-select"  (change)="handleMainCategorySelection($event)">
-              <option value="">اختر الفئة</option>
-              <option *ngFor="let category of categories" [value]="category.id">{{category.catArName}}</option>
+            <select formControlName="category" id="pet-select"  (change)="handleMainCategorySelection($event)">
+              <option value=""> --اختر الفئة-- </option>
+              <option *ngFor="let category of categories"  [value]="category.catEnName">{{category.catArName}}</option>
             </select>
           </div>
           <div class="row">
             <label for=""> النوع :</label>
-            <select name="subcategory" id="pet-select">
-              <option value="">اختر النوع</option>
-              <option *ngFor="let category of categories" value="category.catArName">{{category.catArName}}</option>
+            <select formControlName="subCategory" id="pet-select" (change)="handleMainCategorySelection($event)">
+              <option value=""> --اختر النوع-- </option>
+              <option *ngFor="let subCategory of subCategories"  [value]="subCategory">{{subCategory}}</option>
             </select>
           </div>
         </div>

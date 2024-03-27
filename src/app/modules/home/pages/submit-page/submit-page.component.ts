@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { ProductService } from '../../../core/Services/product.service';
 import { HttpClient } from '@angular/common/http';
+import { Category } from '../../../core/model/Category';
 
 @Component({
   selector: 'app-submit-page',
@@ -17,9 +18,8 @@ export class SubmitPageComponent implements OnInit {
   private fb = inject(FormBuilder);
   productForm!: FormGroup;
   statusInput: string = ''
-  categories: any
-  subCategories: any
-  selectedCategoryId: any;
+  categories: Category[] | any=[]
+  subCategories: string[] =[]
 
   constructor(
     public firestore: AngularFirestore,
@@ -77,15 +77,14 @@ export class SubmitPageComponent implements OnInit {
 
   handleMainCategorySelection(event: Event) {
     const selectedCategory = (event.target as HTMLSelectElement).value;
-    const category = this.categories.find((cat: any) => cat.id === +(selectedCategory));
+    const category = this.categories.find((cat: any) => cat.catEnName === selectedCategory);
     if (category && category.subCategories) {
-      console.log("category.subCategories", category.subCategories);
-
-      this.renderSubcategories(category.subCategories);
+      this.subCategories= category.subCategories
+      // this.renderSubcategories(category.subCategories);
     }
   }
 
-  renderSubcategories(subcategories: string[]) {
+  // renderSubcategories(subcategories: string[]) {
 
-  }
+  // }
 }
