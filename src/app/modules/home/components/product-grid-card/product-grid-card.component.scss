@@ -1,0 +1,20 @@
+@import 'common';
+.product-card{
+  width: 330px;
+  height: 200px;
+  position: relative;
+  background: var(--c-gray-1);
+  border-radius: 12px;
+
+  .left__part{
+    .btn{
+      background: var( --c-gray-4);
+      svg{
+        width: 24px;
+        height: 24px;
+      }
+      span{}
+    }
+  }
+  .right__part{}
+}

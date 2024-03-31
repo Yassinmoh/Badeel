@@ -17,6 +17,16 @@
         background-size: auto 100%;
         background-repeat: no-repeat;
       }
+
+      .products__container{
+        width: 100%;
+        padding: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
     }
   }
 }
