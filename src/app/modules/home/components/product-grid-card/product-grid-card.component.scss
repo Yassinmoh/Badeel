@@ -1,20 +1,38 @@
 @import 'common';
-.product-card{
+
+.product-card {
   width: 330px;
   height: 200px;
   position: relative;
   background: var(--c-gray-1);
   border-radius: 12px;
+  display: flex;
+  align-items: center;
+  .left__part {
+    flex: 1;
+    .btn {
+      background: var(--c-gray-4);
+      width: 30%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.3rem 0;
+      border-radius: 5px;
+      gap: 0.3rem;
 
-  .left__part{
-    .btn{
-      background: var( --c-gray-4);
-      svg{
+      svg {
         width: 24px;
         height: 24px;
       }
-      span{}
+
+      span {
+        @include textStyle(16px, 1.5, var(--primary-font), var(--c-font-1), 400);
+
+      }
     }
   }
-  .right__part{}
+
+  .right__part {
+    flex: 1;
+  }
 }
