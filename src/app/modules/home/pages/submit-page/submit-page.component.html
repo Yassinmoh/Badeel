@@ -48,6 +48,22 @@
             الحد الأدني لإسم الشركة 3 أحرف
           </span>
         </div>
+        <div class="form__filed filed__two-row">
+          <div class="row">
+            <label for=""> الفئة :</label>
+            <select formControlName="category" id="pet-select"  (change)="handleMainCategorySelection($event)">
+              <option value=""> --اختر الفئة-- </option>
+              <option *ngFor="let category of categories"  [value]="category.catEnName">{{category.catArName}}</option>
+            </select>
+          </div>
+          <div class="row">
+            <label for=""> النوع :</label>
+            <select formControlName="subCategory" id="pet-select" (change)="handleMainCategorySelection($event)">
+              <option value=""> --اختر النوع-- </option>
+              <option *ngFor="let subCategory of subCategories"  [value]="subCategory">{{subCategory}}</option>
+            </select>
+          </div>
+        </div>
         <div class="form__filed">
           @if (statusInput === 'boycott') {
           <label for=""> الدليل :</label>

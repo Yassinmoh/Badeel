@@ -1,0 +1,15 @@
+[
+  {
+    "id":1,
+    "catArName":"سيارة",
+    "catEnName":"Car",
+    "subCategories": ["BMW", "Audi", "Tesla"]
+  },
+  {
+    "id":2,
+    "catArName":"الكترونيات",
+    "catEnName":"Electronics",
+    "subCategories": ["Smartphones", "Laptops", "Cameras"]
+  }
+
+]

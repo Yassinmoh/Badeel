@@ -6,3 +6,11 @@ export const fadeInRight = trigger('fadeInRight', [
     animate('0.5s ease-in-out', style({ opacity: 1, transform: 'translateX(0)' }))
   ])
 ])
+
+export const fadeIn= trigger('fadeIn', [
+  transition(':enter', [
+    style({ opacity: 0 }),
+    animate('500ms', style({ opacity: 1 })),
+  ]),
+])
+

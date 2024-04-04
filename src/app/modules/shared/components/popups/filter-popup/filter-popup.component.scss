@@ -26,21 +26,24 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 1rem;
-      p{
+
+      p {
         @include textStyle(17px, 1.5, var(--primary-font), var(--c-font-1), 600);
 
       }
 
-      & > div{
+      &>div {
         display: flex;
         align-items: center;
         gap: 1rem;
-        span{
-        @include textStyle(16px, 1.5, var(--primary-font), var(--c-outlined), 400);
-        text-decoration: underline;
-        cursor: pointer;
+
+        span {
+          @include textStyle(16px, 1.5, var(--primary-font), var(--c-outlined), 400);
+          text-decoration: underline;
+          cursor: pointer;
         }
-        svg{
+
+        svg {
           width: 18px;
           height: 18px;
           color: var(--c-font-1);
@@ -49,13 +52,97 @@
     }
 
     .filter__content {
-      height: calc(100% -  (56px + 56px));
+      height: calc(100% - (56px + 56px));
+      padding: 1rem;
+
+      .category__section {
+        border-bottom: 1px solid var(--c-gray-3);
+        padding-bottom: 1rem;
+
+        .cat-col {
+          h3 {
+            @include textStyle(16px, 1.5, var(--primary-font), var(--c-font-1), 400);
+            position: relative;
+
+            &.active::after {
+              content: '';
+              position: absolute;
+              top: 50%;
+              right: 14%;
+              width: 6px;
+              height: 6px;
+              border-radius: 50%;
+              background: var(--c-action);
+            }
+          }
+
+          select {
+            @include FormInput;
+            font-size: 15px;
+            color: var(--c-font-1);
+
+            option {
+              background-color: var(--c-gray-1);
+            }
+          }
+        }
+
+        .subCat-col{
+          margin-top: 1.5rem;
+
+          h3 {
+            @include textStyle(16px, 1.5, var(--primary-font), var(--c-font-1), 400)
+          }
+
+          &>div {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+
+            input[type=checkbox] {
+              width: 30px;
+              height: 30px;
+              accent-color: var(--c-input-floating-bg);
+            }
+
+            label {
+              @include textStyle(17px, 1.5, var(--primary-font), var(--c-font-1), 400);
+            }
+          }
+        }
+      }
+      .status__section{
+        border-bottom: 1px solid var(--c-gray-3);
+        margin-top: 1.5rem;
+        padding-bottom: 1rem;
+        h3 {
+          @include textStyle(16px, 1.5, var(--primary-font), var(--c-font-1), 400)
+        }
+
+        &>div {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin: 0.5rem 0;
+
+          input[type=checkbox] {
+            width: 30px;
+            height: 30px;
+            accent-color: var(--c-input-floating-bg);
+          }
+
+          label {
+            @include textStyle(17px, 1.5, var(--primary-font), var(--c-font-1), 400);
+          }
+        }
+      }
     }
 
     .filter__footer {
       height: 56px;
 
-      button{
+      button {
         width: 100%;
         height: 100%;
         background: transparent;
@@ -63,9 +150,9 @@
         @include textStyle(18px, 1.5, var(--primary-font), var(--c-font-1), 600);
       }
 
-      &::before{
+      &::before {
         content: '';
-        background: linear-gradient(0deg,#202020 0%,rgba(32,32,32,0) 100%);
+        background: linear-gradient(0deg, #202020 0%, rgba(32, 32, 32, 0) 100%);
         width: 100%;
         height: 58px;
         position: absolute;
@@ -78,9 +165,9 @@
 
 @include DesktopScreen {
   :host {
-    .filter{
-      .container{
-        width:350px;
+    .filter {
+      .container {
+        width: 350px;
         height: 100%;
       }
     }

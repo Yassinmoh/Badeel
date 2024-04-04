@@ -1,5 +1,6 @@
 export interface Category {
-  id?: string;
-  name?: string;
-  parent?: string;
+  id?: number;
+  catArName?: string,
+  catEnName?: string,
+  subCategories?: string[]
 }
