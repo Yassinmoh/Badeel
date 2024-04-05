@@ -1,12 +1,17 @@
 <section class="homepagee__section">
-<app-intro></app-intro>
-<app-active-filter></app-active-filter>
-<section class="products__container">
-  <ng-container *ngIf="currentViewType == 'grid'">
-    <app-product-grid-card *ngFor="let product of [].constructor(12)"></app-product-grid-card>
-  </ng-container>
-  <ng-container *ngIf="currentViewType== 'table'">
-    <app-product-row-card [isMobileScreen]="isMobileScreen"></app-product-row-card>
-  </ng-container>
-</section>
+  <app-intro></app-intro>
+  <app-active-filter></app-active-filter>
+  <section class="products__container">
+    <ng-container *ngIf="currentViewType == 'grid'">
+      @for(product of [].constructor(12); track product){
+      <app-product-grid-card></app-product-grid-card>
+      }@empty {
+      <span>لا يوجد منتجات لعرضها</span>
+      }
+    </ng-container>
+    <ng-container *ngIf="currentViewType== 'table'">
+      <app-product-row-card [isMobileScreen]="isMobileScreen"></app-product-row-card>
+    </ng-container>
+  </section>
+  <div class="more__btn">إعرض أكثر</div>
 </section>

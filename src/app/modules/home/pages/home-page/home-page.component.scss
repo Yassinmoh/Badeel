@@ -18,9 +18,21 @@
         background-repeat: no-repeat;
       }
 
-      .products__container{
+      .products__container {
         width: 100%;
         padding: 1.5rem;
+      }
+
+      .more__btn {
+        border: 1px solid #fff;
+        width: fit-content;
+        padding: 0.7rem 1.5rem;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        background: transparent;
+        @include textStyle(16px, 1.5, var(--primary-font), var(--c-font-1), 400);
+        cursor: pointer;
       }
     }
   }
@@ -30,12 +42,12 @@
 
 @include DesktopScreen {
   :host {
-    .homepagee__section{
+    .homepagee__section {
       &::before {
         top: 7%;
       }
 
-      .products__container{
+      .products__container {
         display: flex;
         align-items: center;
         justify-content: center;

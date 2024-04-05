@@ -136,6 +136,7 @@
           padding: 1rem 0;
 
           &:first-child {
+            padding-right: 1rem;
             @include textStyle(20px, 1.5, var(--primary-font), var(--c-font-1), 600);
           }
 
@@ -189,6 +190,7 @@
           }
 
           &:last-child {
+            padding-left: 1rem;
             >div {
               background: var(--c-gray-4);
               display: flex;
@@ -213,8 +215,8 @@
         }
 
         &:hover{
-          background: rgb(12, 12, 12);
-          transition: all 0.3s ease;
+          background: rgba(12, 12, 12, 0.486);
+          transition: all 0.4s ease;
         }
       }
     }
