@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-product-grid-card',
@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './product-grid-card.component.scss'
 })
 export class ProductGridCardComponent {
-
+  @Input() isMobileScreen: boolean = false;
 }

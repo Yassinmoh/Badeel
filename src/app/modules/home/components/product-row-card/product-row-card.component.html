@@ -1,1 +1,73 @@
-<p>product-row-card works!</p>
+<ng-container *ngIf="isMobileScreen">
+  <div class="product-card" *ngFor="let product of [].constructor(12)">
+    <div class="right__part">
+      <div class="product_name">
+        <h2>تايجر</h2>
+        <p>Tiger</p>
+      </div>
+      <div class="product_category">
+        <span>رقائق</span>
+      </div>
+      <div class="product_status">
+        <svg>
+          <use href="#status-A"></use>
+        </svg>
+        <span>بديل</span>
+      </div>
+    </div>
+    <div class="left__part">
+      <div class="product_img">
+        <img src="../../../../../assets/images/products/tiger.jpeg" alt="product_img">
+      </div>
+      <div class="btn">
+        <span>التفاصيل</span>
+        <svg>
+          <use href="#eye"></use>
+        </svg>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="!isMobileScreen">
+  <div class="product__row-card">
+    <table>
+      <thead>
+        <tr>
+          <th>اسم المنتج</th>
+          <th>الإسم بالإنجليزية</th>
+          <th>التصنيف</th>
+          <th>الصورة</th>
+          <th>الحالة</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of [].constructor(12)">
+          <td class="product__row-ar">تايجر</td>
+          <td>Tiger</td>
+          <td>
+            <div><span>وجبات خفيفة من الذرة</span></div>
+          </td>
+          <td>
+            <div><img src="../../../../../assets/images/products/tiger.jpeg" alt="product_img"></div>
+          </td>
+          <td>
+            <div class="product_status">
+              <svg>
+                <use href="#status-A"></use>
+              </svg>
+              <span>بديل</span>
+            </div>
+          </td>
+          <td>
+            <div>
+              <span>التفاصيل</span>
+              <svg><use href="#eye"></use></svg>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-container>

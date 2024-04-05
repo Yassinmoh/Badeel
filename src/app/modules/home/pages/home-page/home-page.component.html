@@ -2,6 +2,11 @@
 <app-intro></app-intro>
 <app-active-filter></app-active-filter>
 <section class="products__container">
-<app-product-grid-card *ngFor="let product of [].constructor(9)"></app-product-grid-card>
+  <ng-container *ngIf="currentViewType == 'grid'">
+    <app-product-grid-card *ngFor="let product of [].constructor(12)"></app-product-grid-card>
+  </ng-container>
+  <ng-container *ngIf="currentViewType== 'table'">
+    <app-product-row-card [isMobileScreen]="isMobileScreen"></app-product-row-card>
+  </ng-container>
 </section>
 </section>

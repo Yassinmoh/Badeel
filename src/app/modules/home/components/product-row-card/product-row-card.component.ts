@@ -1,12 +1,17 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-product-row-card',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './product-row-card.component.html',
   styleUrl: './product-row-card.component.scss'
 })
-export class ProductRowCardComponent {
+export class ProductRowCardComponent implements OnInit {
+  @Input() isMobileScreen: boolean = false;
+  ngOnInit(): void {
+
+  }
 
 }

@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { PopupService } from '../../../core/Services/popup.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-active-filter',
@@ -10,7 +11,8 @@ import { PopupService } from '../../../core/Services/popup.service';
 })
 export class ActiveFilterComponent {
   popupService = inject(PopupService)
-  pressed = '';
+  router = inject(Router)
+  pressed:string = 'grid';
   constructor() { }
   openFilterPopup() {
     this.popupService.openFilterPopup()
@@ -19,6 +21,7 @@ export class ActiveFilterComponent {
   toggleClick(event: MouseEvent, type: string): void {
     if (this.pressed !== type) {
       this.pressed = type;
+      this.router.navigate([], { queryParams: { view: type } });
     }
   }
 }
