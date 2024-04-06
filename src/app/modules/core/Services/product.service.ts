@@ -20,7 +20,7 @@ addProduct(productData: Product) {
 
 // Fetch single product
 getProduct(productId: string): Observable<Product> {
-  const productRef = this.firestore.collection('products').doc(productId);
+  const productRef = this.firestore.collection('products',ref => ref.limit(10)).doc(productId);
   return productRef.get().pipe(
     map((productDoc) => (productDoc.exists ? productDoc.data() as Product:{}))
   );

@@ -10,6 +10,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ProductRowCardComponent implements OnInit {
   @Input() isMobileScreen: boolean = false;
+  @Input() products: any = {};
   ngOnInit(): void {
 
   }
