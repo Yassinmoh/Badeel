@@ -1,7 +1,7 @@
 <section class="homepagee__section">
   <app-intro></app-intro>
   <app-active-filter></app-active-filter>
-  <app-product-details-popup></app-product-details-popup>
+  <app-product-details-popup *ngIf="selectedProduct" [selectedProduct]="selectedProduct" (onClose)="closePopup()"></app-product-details-popup>
   <section class="products__container" *ngIf="products$ | async as products">
     <ng-container *ngIf="currentViewType == 'grid'">
       @for(product of products; track product){
@@ -11,7 +11,7 @@
       }
     </ng-container>
     <ng-container *ngIf="currentViewType== 'table'">
-      <app-product-row-card [products]="products" [isMobileScreen]="isMobileScreen"></app-product-row-card>
+      <app-product-row-card [products]="products" (onSelectProduct)="getProductDetails($event)" [isMobileScreen]="isMobileScreen"></app-product-row-card>
     </ng-container>
   </section>
   <div class="more__btn">إعرض أكثر</div>

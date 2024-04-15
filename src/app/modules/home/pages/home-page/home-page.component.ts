@@ -19,10 +19,10 @@ import { SharedModule } from '../../../shared/shared.module';
 export class HomePageComponent implements OnInit {
   route = inject(ActivatedRoute)
   productServise = inject(ProductService)
-
   currentViewType: string = ''
   isMobileScreen: boolean = false
   products$!: Observable<any[]>;
+  selectedProduct:any=null
 
 
   @HostListener('window:resize', ['$event'])
@@ -45,8 +45,11 @@ export class HomePageComponent implements OnInit {
 
 
   getProductDetails(e:Event){
-    console.log("SELECT PRODUCT",e);
+    this.selectedProduct=e
+  }
 
+  closePopup(){
+    this.selectedProduct=null
   }
 
 

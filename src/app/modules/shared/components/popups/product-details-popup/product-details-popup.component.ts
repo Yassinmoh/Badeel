@@ -1,15 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { fadeIn } from '../../../../core/animations';
 
 @Component({
   selector: 'app-product-details-popup',
   standalone: true,
   imports: [],
   templateUrl: './product-details-popup.component.html',
-  styleUrl: './product-details-popup.component.scss'
+  styleUrl: './product-details-popup.component.scss',
+  animations:[fadeIn]
 })
 export class ProductDetailsPopupComponent {
+  @Input() selectedProduct:any={}
+  @Output() onClose = new EventEmitter<any>();
 
-
+  close(){
+    this.onClose.emit()
+  }
   getProductStatus(status:string):string{
     if(status == 'boycott'){
       return 'داعم'
@@ -21,4 +27,5 @@ export class ProductDetailsPopupComponent {
       return ''
     }
   }
+
 }

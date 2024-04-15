@@ -1,11 +1,11 @@
-<div class="prodect__details">
+<div class="prodect__details" @fadeIn>
   <div class="container">
     <div class="box_header">
       <div class="product_info">
-        <h3>جاجوار</h3>
-        <p>Jaguar</p>
+        <h3>{{selectedProduct.productArName}}</h3>
+        <p>{{selectedProduct.productEnName}}</p>
       </div>
-      <div class="close_icon">
+      <div class="close_icon" (click)="close()">
         <svg><use href="#close-icon"></use></svg>
       </div>
     </div>
@@ -21,13 +21,13 @@
           </div>
           <div class="product__company">
             <h3>المُنتِج</h3>
-            <p>Keet Natural Food</p>
+            <p>{{selectedProduct.company}}</p>
           </div>
         </div>
       </div>
       <div class="bottom-content">
         <h3>الدليل</h3>
-        <p>منتج محلي او عالمي لم نجد دليل بمساهمة إنتاجه مع الكيان الصهيوني.</p>
+        <p>{{selectedProduct.details}}</p>
       </div>
     </div>
     <div class="box_footer">
