@@ -7,11 +7,12 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductRowCardComponent } from '../../components/product-row-card/product-row-card.component';
 import { Observable, map, tap } from 'rxjs';
 import { ProductService } from '../../../core/Services/product.service';
+import { SharedModule } from '../../../shared/shared.module';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [IntroComponent, ActiveFilterComponent, ProductGridCardComponent, ProductRowCardComponent, CommonModule],
+  imports: [IntroComponent, ActiveFilterComponent, ProductGridCardComponent, ProductRowCardComponent, CommonModule,SharedModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
 })

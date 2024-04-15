@@ -4,6 +4,7 @@ import { TypewriterComponent } from './components/typewriter/typewriter.componen
 import { SearchComponent } from './components/search/search.component';
 import { FilterPopupComponent } from './components/popups/filter-popup/filter-popup.component';
 import { ActiveFilterComponent } from './components/active-filter/active-filter.component';
+import { ProductDetailsPopupComponent } from './components/popups/product-details-popup/product-details-popup.component';
 
 
 
@@ -14,13 +15,15 @@ import { ActiveFilterComponent } from './components/active-filter/active-filter.
     TypewriterComponent,
     SearchComponent,
     FilterPopupComponent,
-    ActiveFilterComponent
+    ActiveFilterComponent,
+    ProductDetailsPopupComponent
   ],
   exports:[
     TypewriterComponent,
     SearchComponent,
     FilterPopupComponent,
-    ActiveFilterComponent
+    ActiveFilterComponent,
+    ProductDetailsPopupComponent
   ]
 })
 export class SharedModule { }

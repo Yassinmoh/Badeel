@@ -1,6 +1,7 @@
 <section class="homepagee__section">
   <app-intro></app-intro>
   <app-active-filter></app-active-filter>
+  <app-product-details-popup></app-product-details-popup>
   <section class="products__container" *ngIf="products$ | async as products">
     <ng-container *ngIf="currentViewType == 'grid'">
       @for(product of products; track product){
