@@ -89,7 +89,8 @@
 
         .subCat-col{
           margin-top: 1.5rem;
-
+          max-height: 8rem;
+          overflow-y: scroll;
           h3 {
             @include textStyle(16px, 1.5, var(--primary-font), var(--c-font-1), 400)
           }
@@ -101,8 +102,8 @@
             margin: 0.5rem 0;
 
             input[type=checkbox] {
-              width: 30px;
-              height: 30px;
+              width: 24px;
+              height: 24px;
               accent-color: var(--c-input-floating-bg);
             }
 
@@ -127,8 +128,8 @@
           margin: 0.5rem 0;
 
           input[type=checkbox] {
-            width: 30px;
-            height: 30px;
+            width: 24px;
+            height: 24px;
             accent-color: var(--c-input-floating-bg);
           }
 
@@ -169,6 +170,13 @@
       .container {
         width: 350px;
         height: 100%;
+        .filter__content {
+          .category__section {
+            .subCat-col{
+              max-height: 28rem;
+            }
+          }
+        }
       }
     }
   }

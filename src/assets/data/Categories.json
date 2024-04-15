@@ -10,6 +10,42 @@
     "catArName":"الكترونيات",
     "catEnName":"Electronics",
     "subCategories": ["Smartphones", "Laptops", "Cameras","Headphone"]
+  },
+  {
+    "id":3,
+    "catArName":"السلاسل التجارية",
+    "catEnName":"Commercial chains",
+    "subCategories": ["هايبر ماركت", "محل بقالة"]
+  },
+  {
+    "id":4,
+    "catArName":"الشركات",
+    "catEnName":"Companies",
+    "subCategories": ["تأمين", "تكنولوجيا","البناء","المؤسسات المالية"]
+  },
+  {
+    "id":5,
+    "catArName":"مطاعم ومقاهي",
+    "catEnName":"Cafes",
+    "subCategories": ["طعام سريع", "برجر","بيتزا","دجاج مقلي","مأكولات بحرية","حلويات","قهوة"]
+  },
+  {
+    "id":6,
+    "catArName":"مواد غذائية",
+    "catEnName":"Foodstuffs",
+    "subCategories": ["معجنات", "لحوم ودواجن","صلصات وتوابل","مربات وعسل","الزبدة والسمن","الأرز والمعكرونة","تونة","طعام معلب","مخللات","السكر وأساسيات الخبز","حبوب الإفطار","الأعشاب والعطارة"]
+  },
+  {
+    "id":7,
+    "catArName":"معدات تنظيف",
+    "catEnName":"Cleaning equipment",
+    "subCategories": ["العناية بالنسيج", "غسيل الأطباق","معطر","مكافحة الحشرات","مبيض ومطهر","الإسفنج وأجهزة الغسيل","الفرش والمماسح","تنظيف المرحاض","الإهتمام بالأحذية","لفائف المطبخ"]
+  },
+  {
+    "id":8,
+    "catArName":"البان",
+    "catEnName":"Dairy",
+    "subCategories": ["لبن", "زبادي","جبن","حليب مجفف"]
   }
 
 ]

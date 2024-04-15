@@ -124,6 +124,7 @@
           width: 22%;
           padding-bottom: 1.5rem;
           @include textStyle(17px, 1.5, var(--primary-font), var(--c-font-1), 700);
+          padding-right: 1rem;
         }
       }
     }
