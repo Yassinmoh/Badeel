@@ -15,25 +15,23 @@ export class ProductRowCardComponent implements OnInit {
   @Input() products: any = {};
   @Output() onSelectProduct = new EventEmitter<any>();
   products$!: Observable<any[]>;
-
   productServise = inject(ProductService)
+
+  productStatusMap: { [key: string]: any } = {
+    'boycott': { icon: 'B', name: 'داعم', textColor: '#e94444' },
+    'alternative': { icon: 'A', name: 'بديل', textColor: '#9bc880' },
+    'unsure': { icon: 'C', name: 'قيد المراجعة', textColor: '#c6d315' },
+  };
+
   ngOnInit(): void {
-    this.products$ = this.productServise.getProducts().pipe(map(product => product),tap(x => console.log("Products",x)))
+    this.products$ = this.productServise.getProducts().pipe(map(product => product), tap(data => console.log("Products", data)))
   }
 
-  getProductStatus(status:string):string{
-    if(status == 'boycott'){
-      return 'داعم'
-    }else if(status == 'alternative'){
-      return 'بديل'
-    }else if(status == 'unsure'){
-      return 'غير متأكد'
-    }else{
-      return ''
-    }
+  getProductStatus(status: string): any {
+    return this.productStatusMap[status] || '';
   }
 
-  showDetails(product:any){
+  showDetails(product: any) {
     this.onSelectProduct.emit(product)
   }
 

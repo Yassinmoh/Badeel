@@ -9,10 +9,8 @@
         <span>{{product.category}}</span>
       </div>
       <div class="product_status">
-        <svg>
-          <use href="#status-A"></use>
-        </svg>
-        <span>{{getProductStatus(product.status)}}</span>
+        <svg><use [attr.href]="'#status-' + getProductStatus(product.status)?.icon"></use></svg>
+        <span [ngStyle]="{color: getProductStatus(product.status)?.textColor}">{{getProductStatus(product.status)?.name}}</span>
       </div>
     </div>
     <div class="left__part">
@@ -54,10 +52,8 @@
           </td>
           <td>
             <div class="product_status">
-              <svg>
-                <use href="#status-A"></use>
-              </svg>
-              <span>{{getProductStatus(product.status)}}</span>
+              <svg><use [attr.href]="'#status-' + getProductStatus(product.status)?.icon"></use></svg>
+              <span [ngStyle]="{color: getProductStatus(product.status)?.textColor}">{{getProductStatus(product.status)?.name}}</span>
             </div>
           </td>
           <td>
