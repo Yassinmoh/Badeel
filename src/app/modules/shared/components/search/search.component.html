@@ -1,11 +1,11 @@
 <div class="search-box">
-  <form>
+  <form  [formGroup]="searchForm"  (submit)="submit($event)">
     <div class="form_body" >
       <div class="form__input" #searchBody>
         <svg><use href="#search_icon"></use></svg>
-        <input type="text" placeholder="إبحث عن منتج أو شركة..." (blur)="onBlur()" (focus)="onFocus()">
+        <input type="text" formControlName="searchInput" placeholder="إبحث عن منتج أو شركة..." (blur)="onBlur()" (focus)="onFocus()">
       </div>
-      <div class="form__btn">
+      <div class="form__btn" [ngClass]="{'active_search':!isInputEmpty,'disabled': isInputEmpty}">
         <button type="submit">إبحث</button>
       </div>
     </div>

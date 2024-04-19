@@ -8,6 +8,7 @@ import { ProductRowCardComponent } from '../../components/product-row-card/produ
 import { Observable, map, tap } from 'rxjs';
 import { ProductService } from '../../../core/Services/product.service';
 import { SharedModule } from '../../../shared/shared.module';
+import { Product } from '../../../core/model/Product';
 
 @Component({
   selector: 'app-home-page',
@@ -23,7 +24,7 @@ export class HomePageComponent implements OnInit {
   isMobileScreen: boolean = false
   products$!: Observable<any[]>;
   selectedProduct:any=null
-
+  searchResults: Product[] = [];
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
@@ -39,8 +40,13 @@ export class HomePageComponent implements OnInit {
       }
     })
 
-    this.products$ = this.productServise.getProducts().pipe(map(product => product),tap(x => console.log("Products",x)
-    ))
+    this.products$ = this.productServise.getProducts().pipe(map(product => product),tap(x => console.log("Products",x)))
+
+    this.productServise.searchResults$.subscribe(results => {
+      this.searchResults = results;
+      console.log("searchResults from HOME", this.searchResults);
+
+    });
   }
 
 

@@ -2,7 +2,7 @@
   <app-intro></app-intro>
   <app-active-filter></app-active-filter>
   <app-product-details-popup *ngIf="selectedProduct" [selectedProduct]="selectedProduct" (onClose)="closePopup()"></app-product-details-popup>
-  <section class="products__container" *ngIf="products$ | async as products">
+  <section class="products__container" *ngIf="searchResults as products">
     <ng-container *ngIf="currentViewType == 'grid'">
       @for(product of products; track product){
       <app-product-grid-card [product]="product" (onSelectProduct)="getProductDetails($event)"></app-product-grid-card>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Product } from '../model/Product';
 import { Observable } from 'rxjs/internal/Observable';
-import { map } from 'rxjs';
+import { BehaviorSubject, map, merge, pairwise } from 'rxjs';
 
 
 
@@ -11,37 +11,53 @@ import { map } from 'rxjs';
 })
 export class ProductService {
 
-  constructor(private firestore: AngularFirestore) {}
+  private searchResultsSubject = new BehaviorSubject<Product[]>([]);
+  searchResults$ = this.searchResultsSubject.asObservable();
 
-// Add product
-addProduct(productData: Product) {
-  return this.firestore.collection('products').add(productData);
-}
+  constructor(private firestore: AngularFirestore) { }
 
-// Fetch single product
-getProduct(productId: string): Observable<Product> {
-  const productRef = this.firestore.collection('products',ref => ref.limit(10)).doc(productId);
-  return productRef.get().pipe(
-    map((productDoc) => (productDoc.exists ? productDoc.data() as Product:{}))
-  );
-}
+  // Add product
+  addProduct(productData: Product) {
+    return this.firestore.collection('products').add(productData);
+  }
 
-// Fetch product list
-getProducts(): Observable<Product[]> {
-  return this.firestore.collection('products').get().pipe(
-    map((productsSnapshot) => productsSnapshot.docs.map((doc) => doc.data() as Product))
-  );
-}
+  // Fetch single product
+  getProduct(productId: string): Observable<Product> {
+    const productRef = this.firestore.collection('products', ref => ref.limit(10)).doc(productId);
+    return productRef.get().pipe(
+      map((productDoc) => (productDoc.exists ? productDoc.data() as Product : {}))
+    );
+  }
 
-// Update product
-updateProduct(productId: string, productData: Product): Promise<void> {
-  const productRef = this.firestore.collection('products').doc(productId);
-  return productRef.update(productData);
-}
+  // Fetch product list
+  getProducts(): Observable<Product[]> {
+    return this.firestore.collection('products').get().pipe(
+      map((productsSnapshot) => productsSnapshot.docs.map((doc) => doc.data() as Product))
+    );
+  }
 
-// Delete product
-deleteProduct(productId: string): Promise<void> {
-  const productRef = this.firestore.collection('products').doc(productId);
-  return productRef.delete();
-}
+  // Update product
+  updateProduct(productId: string, productData: Product): Promise<void> {
+    const productRef = this.firestore.collection('products').doc(productId);
+    return productRef.update(productData);
+  }
+
+  // Delete product
+  deleteProduct(productId: string): Promise<void> {
+    const productRef = this.firestore.collection('products').doc(productId);
+    return productRef.delete();
+  }
+
+  // Search products "Using Firestore Queries"
+  searchProducts(searchTerm: string): Observable<Product[]> {
+    return this.firestore.collection<Product>('products', ref =>
+      ref.orderBy('productArName')
+        .where('productArName', '>=', searchTerm.toLowerCase())
+        .where('productArName', '<', searchTerm.toLowerCase() + '\uf8ff')
+    ).valueChanges({ idField: 'productId' });
+  }
+
+  updateSearchResults(results: Product[]) {
+    this.searchResultsSubject.next(results);
+  }
 }
