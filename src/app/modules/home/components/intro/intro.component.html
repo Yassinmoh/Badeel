@@ -1,5 +1,5 @@
 <div class="intro">
   <app-typewriter></app-typewriter>
   <p>قائمة بالمنتجات الداعمة للكيان الصهيوني والبدائل المحلية.</p>
-  <app-search></app-search>
+  <app-search (onSearch)="getSearchResult($event)"></app-search>
 </div>

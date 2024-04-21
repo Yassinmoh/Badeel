@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { TypewriterComponent } from '../../../shared/components/typewriter/typewriter.component';
 import { SearchComponent } from '../../../shared/components/search/search.component';
+import { Product } from '../../../core/model/Product';
 
 @Component({
   selector: 'app-intro',
@@ -10,5 +11,10 @@ import { SearchComponent } from '../../../shared/components/search/search.compon
   styleUrl: './intro.component.scss'
 })
 export class IntroComponent {
+  @Output() onProductsFiltered = new EventEmitter<Product[]>();
 
+  getSearchResult(products: Product[]): void {
+    console.log("Products INTRO", products);
+    this.onProductsFiltered.emit(products);
+  }
 }

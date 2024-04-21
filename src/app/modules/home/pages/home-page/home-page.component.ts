@@ -13,7 +13,7 @@ import { Product } from '../../../core/model/Product';
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [IntroComponent, ActiveFilterComponent, ProductGridCardComponent, ProductRowCardComponent, CommonModule,SharedModule],
+  imports: [IntroComponent, ActiveFilterComponent, ProductGridCardComponent, ProductRowCardComponent, CommonModule, SharedModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
 })
@@ -22,9 +22,10 @@ export class HomePageComponent implements OnInit {
   productServise = inject(ProductService)
   currentViewType: string = ''
   isMobileScreen: boolean = false
-  products$!: Observable<any[]>;
-  selectedProduct:any=null
-  searchResults: Product[] = [];
+  // products$!: Observable<any[]>;
+  products: Product[] = []
+  selectedProduct: any = null
+  searchResults$!: Observable<Product[]>;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
@@ -40,22 +41,27 @@ export class HomePageComponent implements OnInit {
       }
     })
 
-    this.products$ = this.productServise.getProducts().pipe(map(product => product),tap(x => console.log("Products",x)))
+    this.productServise.getProducts().pipe(
+      map(product => product),
+      tap((data) => { this.products = data}
+      )).subscribe()
+  }
 
-    this.productServise.searchResults$.subscribe(results => {
-      this.searchResults = results;
-      console.log("searchResults from HOME", this.searchResults);
+  getFilterdData(filtereProducts:Product[]){
+    this.products=filtereProducts
+  }
 
-    });
+  updateSearchResults(filteredProducts: Product[]): void {
+    this.products = filteredProducts;
   }
 
 
-  getProductDetails(e:Event){
-    this.selectedProduct=e
+  getProductDetails(product: Product) {
+    this.selectedProduct = product
   }
 
-  closePopup(){
-    this.selectedProduct=null
+  closePopup() {
+    this.selectedProduct = null
   }
 
 

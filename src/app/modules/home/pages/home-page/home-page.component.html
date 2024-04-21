@@ -1,8 +1,8 @@
 <section class="homepagee__section">
-  <app-intro></app-intro>
+  <app-intro (onProductsFiltered)="updateSearchResults($event)"></app-intro>
   <app-active-filter></app-active-filter>
   <app-product-details-popup *ngIf="selectedProduct" [selectedProduct]="selectedProduct" (onClose)="closePopup()"></app-product-details-popup>
-  <section class="products__container" *ngIf="searchResults as products">
+  <section class="products__container" *ngIf="products">
     <ng-container *ngIf="currentViewType == 'grid'">
       @for(product of products; track product){
       <app-product-grid-card [product]="product" (onSelectProduct)="getProductDetails($event)"></app-product-grid-card>

@@ -1,8 +1,8 @@
+import { Product } from './../model/Product';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Product } from '../model/Product';
 import { Observable } from 'rxjs/internal/Observable';
-import { BehaviorSubject, map, merge, pairwise } from 'rxjs';
+import { BehaviorSubject, map, merge, of, pairwise } from 'rxjs';
 
 
 
@@ -13,8 +13,10 @@ export class ProductService {
 
   private searchResultsSubject = new BehaviorSubject<Product[]>([]);
   searchResults$ = this.searchResultsSubject.asObservable();
-
-  constructor(private firestore: AngularFirestore) { }
+  cachedProducts: Product[] = []
+  constructor(private firestore: AngularFirestore) {
+    this.loadAndCachedData()
+  }
 
   // Add product
   addProduct(productData: Product) {
@@ -48,13 +50,25 @@ export class ProductService {
     return productRef.delete();
   }
 
+  loadAndCachedData() {
+    this.getProducts().subscribe(res => {
+      this.cachedProducts = res
+    })
+  }
+
   // Search products "Using Firestore Queries"
-  searchProducts(searchTerm: string): Observable<Product[]> {
+  searchProductsFirebaseQuerie(searchTerm: string): Observable<Product[]> {
     return this.firestore.collection<Product>('products', ref =>
       ref.orderBy('productArName')
         .where('productArName', '>=', searchTerm.toLowerCase())
         .where('productArName', '<', searchTerm.toLowerCase() + '\uf8ff')
     ).valueChanges({ idField: 'productId' });
+  }
+
+  searchProductsFilter(searchTerm: string): Observable<Product[]> {
+    return this.getProducts().pipe(
+      map(products => products.filter(product => product.productArName?.includes(searchTerm)))
+    );
   }
 
   updateSearchResults(results: Product[]) {
