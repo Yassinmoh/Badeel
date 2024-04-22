@@ -79,7 +79,7 @@
       border: 1px solid var(--c-stroke-gray);
       border-radius: 10px;
       width: fit-content;
-      padding: 0.3rem 0.5rem;
+      padding: 0.3rem 0.4rem;
       span{
         @include textStyle(16px, 1.5, var(--primary-font), var(--c-font-1), 600);
       }

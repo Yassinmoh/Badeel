@@ -1,5 +1,5 @@
 <ng-container *ngIf="isMobileScreen">
-  <div class="product-card" *ngFor="let product of products$ |async as products">
+  <div class="product-card" *ngFor="let product of products">
     <div class="right__part">
       <div class="product_name">
         <h2>{{product.productArName}}</h2>
@@ -41,7 +41,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let product of products$ |async as products">
+        <tr *ngFor="let product of products">
           <td class="product__row-ar">{{product.productArName}}</td>
           <td>{{product.productEnName}}</td>
           <td>

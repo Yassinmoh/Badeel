@@ -43,12 +43,12 @@ export class HomePageComponent implements OnInit {
 
     this.productServise.getProducts().pipe(
       map(product => product),
-      tap((data) => { this.products = data}
+      tap((data) => { this.products = data }
       )).subscribe()
   }
 
-  getFilterdData(filtereProducts:Product[]){
-    this.products=filtereProducts
+  getFilterdData(filtereProducts: Product[]) {
+    this.products = filtereProducts
   }
 
   updateSearchResults(filteredProducts: Product[]): void {

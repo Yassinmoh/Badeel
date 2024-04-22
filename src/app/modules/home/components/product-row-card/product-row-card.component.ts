@@ -14,7 +14,7 @@ export class ProductRowCardComponent implements OnInit {
   @Input() isMobileScreen: boolean = false;
   @Input() products: any = {};
   @Output() onSelectProduct = new EventEmitter<any>();
-  products$!: Observable<any[]>;
+  // products$!: Observable<any[]>;
   productServise = inject(ProductService)
 
   productStatusMap: { [key: string]: any } = {
@@ -24,7 +24,7 @@ export class ProductRowCardComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    this.products$ = this.productServise.getProducts().pipe(map(product => product), tap(data => console.log("Products", data)))
+    // this.products$ = this.productServise.getProducts().pipe(map(product => product), tap(data => console.log("Products", data)))
   }
 
   getProductStatus(status: string): any {
