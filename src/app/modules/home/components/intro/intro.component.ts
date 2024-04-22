@@ -14,7 +14,6 @@ export class IntroComponent {
   @Output() onProductsFiltered = new EventEmitter<Product[]>();
 
   getSearchResult(products: Product[]): void {
-    console.log("Products INTRO", products);
     this.onProductsFiltered.emit(products);
   }
 }

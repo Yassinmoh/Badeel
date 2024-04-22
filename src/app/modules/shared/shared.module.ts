@@ -5,6 +5,7 @@ import { SearchComponent } from './components/search/search.component';
 import { FilterPopupComponent } from './components/popups/filter-popup/filter-popup.component';
 import { ActiveFilterComponent } from './components/active-filter/active-filter.component';
 import { ProductDetailsPopupComponent } from './components/popups/product-details-popup/product-details-popup.component';
+import { SplashComponent } from './components/splash/splash.component';
 
 
 
@@ -16,14 +17,16 @@ import { ProductDetailsPopupComponent } from './components/popups/product-detail
     SearchComponent,
     FilterPopupComponent,
     ActiveFilterComponent,
-    ProductDetailsPopupComponent
+    ProductDetailsPopupComponent,
+    SplashComponent
   ],
   exports:[
     TypewriterComponent,
     SearchComponent,
     FilterPopupComponent,
     ActiveFilterComponent,
-    ProductDetailsPopupComponent
+    ProductDetailsPopupComponent,
+    SplashComponent
   ]
 })
 export class SharedModule { }

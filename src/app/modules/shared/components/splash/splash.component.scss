@@ -1,0 +1,33 @@
+@import 'common';
+// @include textStyle(16px, 1.5, var(--primary-font), var(--c-font-1), 400);
+section{
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: var(--c-gray-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+    p{
+      @include textStyle(60px, 21px, var(--secondry-font), var(--c-font-1), 700);
+      font-family: "29LT Ada Flat", system-ui, Avenir, Helvetica, Arial, sans-serif !important;
+      margin: 3rem auto 1rem auto;
+      text-align: center;
+      text-shadow: 3px 3px 2px rgba(236, 84, 63, 1);
+
+    }
+}
+
+@include DesktopScreen{
+  :host{
+    section{
+      p{
+        @include textStyle(65px, 21px, var(--secondry-font), var(--c-font-1), 700);
+      }
+    }
+  }
+}

@@ -78,6 +78,7 @@
 @include LargeDesktopScreen {
   :host{
     header{
+      padding: 5px 8rem;
       .add__product{
         width:10%;
       }
