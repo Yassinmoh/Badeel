@@ -1,4 +1,4 @@
-<app-filter-popup *ngIf="popupService.openFilter | async"></app-filter-popup>
+<app-filter-popup (onFilter)="filter($event)" *ngIf="popupService.openFilter | async"></app-filter-popup>
 <section class="homepagee__section">
   <app-intro (onProductsFiltered)="updateSearchResults($event)"></app-intro>
   <app-active-filter></app-active-filter>

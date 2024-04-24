@@ -7,12 +7,13 @@
         <svg (click)="closeFilterPopup()"><use href="#close-icon"></use></svg>
       </div>
     </div>
-    <div class="filter__content">
+    <form [formGroup]="filterForm" class="filter__content" >
       <div class="category__section">
         <div class="cat-col">
           <h3 class="active">القسم</h3>
           <select id="pet-select"
-            (change)="handleMainCategorySelection($event)">
+          formControlName="category"
+            (change)="handleCategorySelection($event)">
             <option value="no_select"> --اختر الفئة-- </option>
             <option *ngFor="let category of categories"
               [value]="category.catEnName">{{category.catArName}}</option>
@@ -21,8 +22,7 @@
         <div class="subCat-col" *ngIf="showSubCategories" @fadeIn>
           <h3>النوع</h3>
           <div *ngFor="let sub of subCategories">
-            <input type="checkbox" [value]="sub"
-              (click)="handleMainCategorySelection($event)">
+            <input type="checkbox" [value]="sub">
             <label for>{{sub}}</label>
           </div>
         </div>
@@ -35,9 +35,9 @@
         <label [for]="option.EnName">{{ option.arName }}</label>
       </div>
       </div>
-    </div>
+    </form>
     <div class="filter__footer">
-      <button type="submit">إعرض النتائج</button>
+      <button type="submit" (click)="filter($event)">إعرض النتائج</button>
     </div>
   </div>
 </div>

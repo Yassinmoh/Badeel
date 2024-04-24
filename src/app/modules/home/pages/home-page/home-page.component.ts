@@ -67,5 +67,10 @@ export class HomePageComponent implements OnInit {
     this.selectedProduct = null
   }
 
+  filter(e:Event){
+    console.log("Fired",e.target);
+
+  }
+
 
 }
