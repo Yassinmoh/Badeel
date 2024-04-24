@@ -9,6 +9,7 @@ import { Observable, map, tap } from 'rxjs';
 import { ProductService } from '../../../core/Services/product.service';
 import { SharedModule } from '../../../shared/shared.module';
 import { Product } from '../../../core/model/Product';
+import { PopupService } from '../../../core/Services/popup.service';
 
 @Component({
   selector: 'app-home-page',
@@ -19,6 +20,7 @@ import { Product } from '../../../core/model/Product';
 })
 export class HomePageComponent implements OnInit {
   route = inject(ActivatedRoute)
+  public popupService = inject(PopupService)
   productServise = inject(ProductService)
   currentViewType: string = ''
   isMobileScreen: boolean = false
