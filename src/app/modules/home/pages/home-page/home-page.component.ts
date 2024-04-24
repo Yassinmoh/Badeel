@@ -10,11 +10,12 @@ import { ProductService } from '../../../core/Services/product.service';
 import { SharedModule } from '../../../shared/shared.module';
 import { Product } from '../../../core/model/Product';
 import { PopupService } from '../../../core/Services/popup.service';
+import { SpinnerComponent } from '../../../shared/components/spinner/spinner.component';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [IntroComponent, ActiveFilterComponent, ProductGridCardComponent, ProductRowCardComponent, CommonModule, SharedModule],
+  imports: [IntroComponent, ActiveFilterComponent, ProductGridCardComponent, ProductRowCardComponent, CommonModule, SharedModule,SpinnerComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
 })

@@ -8,7 +8,7 @@
       @for(product of products; track product){
       <app-product-grid-card [product]="product" (onSelectProduct)="getProductDetails($event)"></app-product-grid-card>
       }@empty {
-      <span>لا يوجد منتجات لعرضها</span>
+        <app-spinner></app-spinner>
       }
     </ng-container>
     <ng-container *ngIf="currentViewType== 'table'">
