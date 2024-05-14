@@ -7,16 +7,18 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { routes } from './app.routes';
 import { environment } from '../environment/environment';
 import { provideToastr } from 'ngx-toastr';
+import { provideStore } from '@ngrx/store';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideAnimations(),
-    provideToastr({closeButton: false}),
+    provideToastr({ closeButton: false }),
     importProvidersFrom([
-      provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-      provideFirestore(() => getFirestore())
+        provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+        provideFirestore(() => getFirestore())
     ]),
-    { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig }
-  ]
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig },
+    provideStore()
+]
 };
