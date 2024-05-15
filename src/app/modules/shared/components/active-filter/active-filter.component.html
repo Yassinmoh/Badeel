@@ -7,10 +7,10 @@
       <span>الترتيب والأقسام</span>
     </div>
     <div class="icons">
-      <svg (click)="toggleClick($event,'table')" [attr.aria-pressed]="pressed === 'table'">
+      <svg (click)="toggleClick('table')" [attr.aria-pressed]="(currentViewMood$ | async) === 'table'">
         <use href="#table_icon"></use>
       </svg>
-      <svg (click)="toggleClick($event , 'grid')" [attr.aria-pressed]="pressed === 'grid'">
+      <svg (click)="toggleClick('grid')" [attr.aria-pressed]="(currentViewMood$ | async) === 'grid'">
         <use href="#grid_icon"></use>
       </svg>
     </div>

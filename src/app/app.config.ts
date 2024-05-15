@@ -7,6 +7,8 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { routes } from './app.routes';
 import { environment } from '../environment/environment';
 import { provideToastr } from 'ngx-toastr';
+import { provideStore } from '@ngrx/store';
+import { reducers, metaReducers } from './store';
 
 
 export const appConfig: ApplicationConfig = {
@@ -19,5 +21,6 @@ export const appConfig: ApplicationConfig = {
         provideFirestore(() => getFirestore())
     ]),
     { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig },
+    provideStore(reducers, { metaReducers })
 ]
 };
