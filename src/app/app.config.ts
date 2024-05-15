@@ -1,4 +1,4 @@
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, isDevMode } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
@@ -7,7 +7,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { routes } from './app.routes';
 import { environment } from '../environment/environment';
 import { provideToastr } from 'ngx-toastr';
-import { provideStore } from '@ngrx/store';
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,6 +19,5 @@ export const appConfig: ApplicationConfig = {
         provideFirestore(() => getFirestore())
     ]),
     { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig },
-    provideStore()
 ]
 };

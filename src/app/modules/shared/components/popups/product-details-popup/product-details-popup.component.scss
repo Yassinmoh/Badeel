@@ -16,7 +16,9 @@
   .container {
     width: 95%;
     margin: 0 auto;
-    height: 392px;
+    // height: 392px;
+    height: auto;
+    min-height: 392px;
     border-radius: 12px;
     box-shadow: 0 4px 64px -32px #00000040;
     background: var(--bg-color);
@@ -37,6 +39,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
 
         svg {
           width: 15px;
@@ -149,9 +152,9 @@
 @include DesktopScreen {
   :host {
     .prodect__details {
-      .container{
+      .container {
         max-width: 500px;
-        height: 415px;
+        min-height: 415px;
         padding: 1rem;
       }
     }
