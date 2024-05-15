@@ -5,12 +5,16 @@ import { ProductGridCardComponent } from '../../components/product-grid-card/pro
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { ProductRowCardComponent } from '../../components/product-row-card/product-row-card.component';
-import { Observable, map, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ProductService } from '../../../core/Services/product.service';
 import { SharedModule } from '../../../shared/shared.module';
 import { Product } from '../../../core/model/Product';
 import { PopupService } from '../../../core/Services/popup.service';
 import { SpinnerComponent } from '../../../shared/components/spinner/spinner.component';
+import { Store } from '@ngrx/store';
+import { ProductState } from '../../../../store/products/product.reducer';
+import { getAllProducts } from '../../../../store/products/product.selectors';
+import * as productsActions from '../../../../store/products/product.actions'
 
 @Component({
   selector: 'app-home-page',
@@ -21,12 +25,15 @@ import { SpinnerComponent } from '../../../shared/components/spinner/spinner.com
 })
 export class HomePageComponent implements OnInit {
   route = inject(ActivatedRoute)
+  store = inject(Store<ProductState>)
+
   public popupService = inject(PopupService)
   productServise = inject(ProductService)
   currentViewType: string = ''
   isMobileScreen: boolean = false
   // products$!: Observable<any[]>;
   products: Product[] = []
+  products$!:Observable<Product[]>
   selectedProduct: any = null
   searchResults$!: Observable<Product[]>;
 
@@ -44,10 +51,13 @@ export class HomePageComponent implements OnInit {
       }
     })
 
-    this.productServise.getProducts().pipe(
-      map(product => product),
-      tap((data) => { this.products = data }
-      )).subscribe()
+    // this.productServise.getProducts().pipe(
+    //   map(product => product),
+    //   tap((data) => { this.products = data }
+    //   )).subscribe()
+
+      this.products$ = this.store.select(getAllProducts)
+      this.store.dispatch(productsActions.loadProducts())
   }
 
   getFilterdData(filtereProducts: Product[]) {
