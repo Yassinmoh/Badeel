@@ -4,9 +4,18 @@
     "catArName": "سيارة",
     "catEnName": "Car",
     "subCategories": [
-      "BMW",
-      "Audi",
-      "Tesla"
+      {
+        "subCatArName": "بي إم دبليو",
+        "subCatEnName": "BMW"
+      },
+      {
+        "subCatArName": "أودي",
+        "subCatEnName": "Audi"
+      },
+      {
+        "subCatArName": "تسلا",
+        "subCatEnName": "Tesla"
+      }
     ]
   },
   {
@@ -14,11 +23,26 @@
     "catArName": "الكترونيات",
     "catEnName": "Electronics",
     "subCategories": [
-      "بطاريات والطاقة",
-      "الأجهزة الذكية",
-      "إكسسوارات",
-      "لاب توب",
-      "هيدفون"
+      {
+        "subCatArName": "بطاريات والطاقة",
+        "subCatEnName": "Batteries and Power"
+      },
+      {
+        "subCatArName": "الأجهزة الذكية",
+        "subCatEnName": "Smart Devices"
+      },
+      {
+        "subCatArName": "إكسسوارات",
+        "subCatEnName": "Accessories"
+      },
+      {
+        "subCatArName": "لاب توب",
+        "subCatEnName": "Laptops"
+      },
+      {
+        "subCatArName": "هيدفون",
+        "subCatEnName": "Headphones"
+      }
     ]
   },
   {
@@ -26,8 +50,14 @@
     "catArName": "السلاسل التجارية",
     "catEnName": "Commercial chains",
     "subCategories": [
-      "هايبر ماركت",
-      "محل بقالة"
+      {
+        "subCatArName": "هايبر ماركت",
+        "subCatEnName": "Hypermarket"
+      },
+      {
+        "subCatArName": "محل بقالة",
+        "subCatEnName": "Grocery Store"
+      }
     ]
   },
   {
@@ -35,10 +65,22 @@
     "catArName": "الشركات",
     "catEnName": "Companies",
     "subCategories": [
-      "تأمين",
-      "تكنولوجيا",
-      "البناء",
-      "المؤسسات المالية"
+      {
+        "subCatArName": "تأمين",
+        "subCatEnName": "Insurance"
+      },
+      {
+        "subCatArName": "تكنولوجيا",
+        "subCatEnName": "Technology"
+      },
+      {
+        "subCatArName": "البناء",
+        "subCatEnName": "Construction"
+      },
+      {
+        "subCatArName": "المؤسسات المالية",
+        "subCatEnName": "Financial Institutions"
+      }
     ]
   },
   {
@@ -46,13 +88,34 @@
     "catArName": "مطاعم ومقاهي",
     "catEnName": "Cafes",
     "subCategories": [
-      "طعام سريع",
-      "برجر",
-      "بيتزا",
-      "دجاج مقلي",
-      "مأكولات بحرية",
-      "حلويات",
-      "قهوة"
+      {
+        "subCatArName": "طعام سريع",
+        "subCatEnName": "Fast Food"
+      },
+      {
+        "subCatArName": "برجر",
+        "subCatEnName": "Burger"
+      },
+      {
+        "subCatArName": "بيتزا",
+        "subCatEnName": "Pizza"
+      },
+      {
+        "subCatArName": "دجاج مقلي",
+        "subCatEnName": "Fried Chicken"
+      },
+      {
+        "subCatArName": "مأكولات بحرية",
+        "subCatEnName": "Seafood"
+      },
+      {
+        "subCatArName": "حلويات",
+        "subCatEnName": "Desserts"
+      },
+      {
+        "subCatArName": "قهوة",
+        "subCatEnName": "Coffee"
+      }
     ]
   },
   {
@@ -60,18 +123,54 @@
     "catArName": "مواد غذائية",
     "catEnName": "Foodstuffs",
     "subCategories": [
-      "معجنات",
-      "لحوم ودواجن",
-      "صلصات وتوابل",
-      "مربات وعسل",
-      "الزبدة والسمن",
-      "الأرز والمعكرونة",
-      "تونة",
-      "طعام معلب",
-      "مخللات",
-      "السكر وأساسيات الخبز",
-      "حبوب الإفطار",
-      "الأعشاب والعطارة"
+      {
+        "subCatArName": "معجنات",
+        "subCatEnName": "Pastries"
+      },
+      {
+        "subCatArName": "لحوم ودواجن",
+        "subCatEnName": "Meat and Poultry"
+      },
+      {
+        "subCatArName": "صلصات وتوابل",
+        "subCatEnName": "Sauces and Spices"
+      },
+      {
+        "subCatArName": "مربات وعسل",
+        "subCatEnName": "Jams and Honey"
+      },
+      {
+        "subCatArName": "الزبدة والسمن",
+        "subCatEnName": "Butter and Ghee"
+      },
+      {
+        "subCatArName": "الأرز والمعكرونة",
+        "subCatEnName": "Rice and Pasta"
+      },
+      {
+        "subCatArName": "تونة",
+        "subCatEnName": "Tuna"
+      },
+      {
+        "subCatArName": "طعام معلب",
+        "subCatEnName": "Canned Food"
+      },
+      {
+        "subCatArName": "مخللات",
+        "subCatEnName": "Pickles"
+      },
+      {
+        "subCatArName": "السكر وأساسيات الخبز",
+        "subCatEnName": "Sugar and Baking Essentials"
+      },
+      {
+        "subCatArName": "حبوب الإفطار",
+        "subCatEnName": "Breakfast Cereals"
+      },
+      {
+        "subCatArName": "الأعشاب والعطارة",
+        "subCatEnName": "Herbs and Spices"
+      }
     ]
   },
   {
@@ -79,16 +178,46 @@
     "catArName": "معدات تنظيف",
     "catEnName": "Cleaning equipment",
     "subCategories": [
-      "العناية بالنسيج",
-      "غسيل الأطباق",
-      "معطر",
-      "مكافحة الحشرات",
-      "مبيض ومطهر",
-      "الإسفنج وأجهزة الغسيل",
-      "الفرش والمماسح",
-      "تنظيف المرحاض",
-      "الإهتمام بالأحذية",
-      "لفائف المطبخ"
+      {
+        "subCatArName": "العناية بالنسيج",
+        "subCatEnName": "Fabric Care"
+      },
+      {
+        "subCatArName": "غسيل الأطباق",
+        "subCatEnName": "Dishwashing"
+      },
+      {
+        "subCatArName": "معطر",
+        "subCatEnName": "Air Freshener"
+      },
+      {
+        "subCatArName": "مكافحة الحشرات",
+        "subCatEnName": "Pest Control"
+      },
+      {
+        "subCatArName": "مبيض ومطهر",
+        "subCatEnName": "Bleach and Disinfectant"
+      },
+      {
+        "subCatArName": "الإسفنج وأجهزة الغسيل",
+        "subCatEnName": "Sponges and Cleaning Devices"
+      },
+      {
+        "subCatArName": "الفرش والمماسح",
+        "subCatEnName": "Brushes and Mops"
+      },
+      {
+        "subCatArName": "تنظيف المرحاض",
+        "subCatEnName": "Toilet Cleaning"
+      },
+      {
+        "subCatArName": "الإهتمام بالأحذية",
+        "subCatEnName": "Shoe Care"
+      },
+      {
+        "subCatArName": "لفائف المطبخ",
+        "subCatEnName": "Kitchen Rolls"
+      }
     ]
   },
   {
@@ -96,10 +225,22 @@
     "catArName": "البان",
     "catEnName": "Dairy",
     "subCategories": [
-      "لبن",
-      "زبادي",
-      "جبن",
-      "حليب مجفف"
+      {
+        "subCatArName": "لبن",
+        "subCatEnName": "Milk"
+      },
+      {
+        "subCatArName": "زبادي",
+        "subCatEnName": "Yogurt"
+      },
+      {
+        "subCatArName": "جبن",
+        "subCatEnName": "Cheese"
+      },
+      {
+        "subCatArName": "حليب مجفف",
+        "subCatEnName": "Powdered Milk"
+      }
     ]
   },
   {
@@ -107,16 +248,46 @@
     "catArName": "وجبات خفيفة",
     "catEnName": "Snacks",
     "subCategories": [
-      "وجبات خفيفة من الذرة",
-      "رقائق",
-      "بسكويت",
-      "مكسرات",
-      "الحلوي والعلكة",
-      "الفواكة المجففة",
-      "الشكولاتة",
-      "كعك",
-      "آيس كريم",
-      "ألواح الطاقة"
+      {
+        "subCatArName": "وجبات خفيفة من الذرة",
+        "subCatEnName": "Corn Snacks"
+      },
+      {
+        "subCatArName": "رقائق",
+        "subCatEnName": "Chips"
+      },
+      {
+        "subCatArName": "بسكويت",
+        "subCatEnName": "Biscuits"
+      },
+      {
+        "subCatArName": "مكسرات",
+        "subCatEnName": "Nuts"
+      },
+      {
+        "subCatArName": "الحلوي والعلكة",
+        "subCatEnName": "Candy and Gum"
+      },
+      {
+        "subCatArName": "الفواكة المجففة",
+        "subCatEnName": "Dried Fruits"
+      },
+      {
+        "subCatArName": "الشكولاتة",
+        "subCatEnName": "Chocolate"
+      },
+      {
+        "subCatArName": "كعك",
+        "subCatEnName": "Cake"
+      },
+      {
+        "subCatArName": "آيس كريم",
+        "subCatEnName": "Ice Cream"
+      },
+      {
+        "subCatArName": "ألواح الطاقة",
+        "subCatEnName": "Energy Bars"
+      }
     ]
   },
   {
@@ -124,14 +295,38 @@
     "catArName": "المشروبات",
     "catEnName": "Drinks",
     "subCategories": [
-      "مشروبات غازية",
-      "قهوة",
-      "شاي",
-      "أعشاب",
-      "مشروبات طاقة",
-      "شعير",
-      "مياة معدنية",
-      "عصير"
+      {
+        "subCatArName": "مشروبات غازية",
+        "subCatEnName": "Soft Drinks"
+      },
+      {
+        "subCatArName": "قهوة",
+        "subCatEnName": "Coffee"
+      },
+      {
+        "subCatArName": "شاي",
+        "subCatEnName": "Tea"
+      },
+      {
+        "subCatArName": "أعشاب",
+        "subCatEnName": "Herbal Drinks"
+      },
+      {
+        "subCatArName": "مشروبات طاقة",
+        "subCatEnName": "Energy Drinks"
+      },
+      {
+        "subCatArName": "شعير",
+        "subCatEnName": "Barley Drinks"
+      },
+      {
+        "subCatArName": "مياة معدنية",
+        "subCatEnName": "Mineral Water"
+      },
+      {
+        "subCatArName": "عصير",
+        "subCatEnName": "Juice"
+      }
     ]
   },
   {
@@ -139,17 +334,50 @@
     "catArName": "الخدمات الرقمية",
     "catEnName": "Digital services",
     "subCategories": [
-      "بث مباشر",
-      "موسيقى",
-      "التسوق علي الانترنت",
-      "مواصلات",
-      "قسط",
-      "منصة عمل حر",
-      "برمجيات",
-      "سكن",
-      "سفر",
-      "طلب طعام",
-      "وسائط"
+      {
+        "subCatArName": "بث مباشر",
+        "subCatEnName": "Live Streaming"
+      },
+      {
+        "subCatArName": "موسيقى",
+        "subCatEnName": "Music"
+      },
+      {
+        "subCatArName": "التسوق علي الانترنت",
+        "subCatEnName": "Online Shopping"
+      },
+      {
+        "subCatArName": "مواصلات",
+        "subCatEnName": "Transport"
+      },
+      {
+        "subCatArName": "قسط",
+        "subCatEnName": "Installments"
+      },
+      {
+        "subCatArName": "منصة عمل حر",
+        "subCatEnName": "Freelance Platform"
+      },
+      {
+        "subCatArName": "برمجيات",
+        "subCatEnName": "Software"
+      },
+      {
+        "subCatArName": "سكن",
+        "subCatEnName": "Housing"
+      },
+      {
+        "subCatArName": "سفر",
+        "subCatEnName": "Travel"
+      },
+      {
+        "subCatArName": "طلب طعام",
+        "subCatEnName": "Food Delivery"
+      },
+      {
+        "subCatArName": "وسائط",
+        "subCatEnName": "Media"
+      }
     ]
   },
   {
@@ -157,8 +385,14 @@
     "catArName": "مستلزمات الحيوانات الأليفة",
     "catEnName": "Pet supplies",
     "subCategories": [
-      "أغذية الحيوانات الأليفة",
-      "ناقلات الحيوانات الأليفة"
+      {
+        "subCatArName": "أغذية الحيوانات الأليفة",
+        "subCatEnName": "Pet Food"
+      },
+      {
+        "subCatArName": "ناقلات الحيوانات الأليفة",
+        "subCatEnName": "Pet Carriers"
+      }
     ]
   },
   {
@@ -166,8 +400,14 @@
     "catArName": "صحة",
     "catEnName": "Health",
     "subCategories": [
-      "الفيتامينات والمكملات",
-      "أدوات الحلاقة"
+      {
+        "subCatArName": "الفيتامينات والمكملات",
+        "subCatEnName": "Vitamins and Supplements"
+      },
+      {
+        "subCatArName": "أدوات الحلاقة",
+        "subCatEnName": "Shaving Tools"
+      }
     ]
   },
   {
@@ -175,17 +415,50 @@
     "catArName": "رعاية شخصية",
     "catEnName": "Personal care",
     "subCategories": [
-      "النظافة الأنثوية",
-      "الإستحمام والصابون",
-      "العناية بالبشرة",
-      "العناية بالأسنان",
-      "العناية بالشعر",
-      "مزيلات العرق",
-      "العطور",
-      "الحماية من الشمس",
-      "إكسسوارات السفر",
-      "أقنعة الوجه والمطهرات",
-      "مستحضرات التجميل"
+      {
+        "subCatArName": "النظافة الأنثوية",
+        "subCatEnName": "Feminine Hygiene"
+      },
+      {
+        "subCatArName": "الإستحمام والصابون",
+        "subCatEnName": "Bathing and Soap"
+      },
+      {
+        "subCatArName": "العناية بالبشرة",
+        "subCatEnName": "Skincare"
+      },
+      {
+        "subCatArName": "العناية بالأسنان",
+        "subCatEnName": "Dental Care"
+      },
+      {
+        "subCatArName": "العناية بالشعر",
+        "subCatEnName": "Hair Care"
+      },
+      {
+        "subCatArName": "مزيلات العرق",
+        "subCatEnName": "Deodorants"
+      },
+      {
+        "subCatArName": "العطور",
+        "subCatEnName": "Perfumes"
+      },
+      {
+        "subCatArName": "الحماية من الشمس",
+        "subCatEnName": "Sun Protection"
+      },
+      {
+        "subCatArName": "إكسسوارات السفر",
+        "subCatEnName": "Travel Accessories"
+      },
+      {
+        "subCatArName": "أقنعة الوجه والمطهرات",
+        "subCatEnName": "Face Masks and Sanitizers"
+      },
+      {
+        "subCatArName": "مستحضرات التجميل",
+        "subCatEnName": "Cosmetics"
+      }
     ]
   },
   {
@@ -193,10 +466,22 @@
     "catArName": "منتجات الأطفال والرضع",
     "catEnName": "Baby and children's products",
     "subCategories": [
-      "الحفاضات",
-      "أغذية الأطفال",
-      "ملابس وإكسسوارات الأطفال",
-      "العاب الأطفال"
+      {
+        "subCatArName": "الحفاضات",
+        "subCatEnName": "Diapers"
+      },
+      {
+        "subCatArName": "أغذية الأطفال",
+        "subCatEnName": "Baby Food"
+      },
+      {
+        "subCatArName": "ملابس وإكسسوارات الأطفال",
+        "subCatEnName": "Baby Clothes and Accessories"
+      },
+      {
+        "subCatArName": "العاب الأطفال",
+        "subCatEnName": "Baby Toys"
+      }
     ]
   },
   {
@@ -204,12 +489,30 @@
     "catArName": "ملابس",
     "catEnName": "Clothes",
     "subCategories": [
-      "ملابس عامة",
-      "ملابس أطفال",
-      "ملابس رياضية",
-      "أحذية",
-      "ملابس داخلية",
-      "ملابس النوم"
+      {
+        "subCatArName": "ملابس عامة",
+        "subCatEnName": "General Clothing"
+      },
+      {
+        "subCatArName": "ملابس أطفال",
+        "subCatEnName": "Children's Clothing"
+      },
+      {
+        "subCatArName": "ملابس رياضية",
+        "subCatEnName": "Sportswear"
+      },
+      {
+        "subCatArName": "أحذية",
+        "subCatEnName": "Footwear"
+      },
+      {
+        "subCatArName": "ملابس داخلية",
+        "subCatEnName": "Underwear"
+      },
+      {
+        "subCatArName": "ملابس النوم",
+        "subCatEnName": "Sleepwear"
+      }
     ]
   },
   {
@@ -217,11 +520,26 @@
     "catArName": "المنزل والمطبخ",
     "catEnName": "Home and kitchen",
     "subCategories": [
-      "أثاث وديكور",
-      "الفرش والبياضات",
-      "أجهزة منزلية",
-      "أدوات المطبخ",
-      "أدوات المائدة والأواني"
+      {
+        "subCatArName": "أثاث وديكور",
+        "subCatEnName": "Furniture and Decor"
+      },
+      {
+        "subCatArName": "الفرش والبياضات",
+        "subCatEnName": "Bedding and Linens"
+      },
+      {
+        "subCatArName": "أجهزة منزلية",
+        "subCatEnName": "Home Appliances"
+      },
+      {
+        "subCatArName": "أدوات المطبخ",
+        "subCatEnName": "Kitchen Tools"
+      },
+      {
+        "subCatArName": "أدوات المائدة والأواني",
+        "subCatEnName": "Tableware and Utensils"
+      }
     ]
   },
   {
@@ -229,17 +547,14 @@
     "catArName": "المجوهرات والساعات",
     "catEnName": "Jewelry and watches",
     "subCategories": [
-      "المجوهرات",
-      "ساعات رجالي وحريمي"
-    ]
-  },
-  {
-    "id": 19,
-    "catArName": "المجوهرات والساعات",
-    "catEnName": "Jewelry and watches",
-    "subCategories": [
-      "المجوهرات",
-      "ساعات رجالي وحريمي"
+      {
+        "subCatArName": "المجوهرات",
+        "subCatEnName": "Jewelry"
+      },
+      {
+        "subCatArName": "ساعات رجالي وحريمي",
+        "subCatEnName": "Men's and Women's Watches"
+      }
     ]
   }
 ]

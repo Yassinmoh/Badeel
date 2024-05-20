@@ -21,10 +21,10 @@ export class FilterPopupComponent implements OnInit, OnDestroy {
   @Output() onFilter = new EventEmitter<any>()
   filterForm!: FormGroup
   categories: Category[] | any = []
-  subCategories: string[] = []
+  subCategories: any[] = []
   showSubCategories: boolean = false
 
-  statusOptions = [{control:'status' ,arName: 'داعم', EnName: 'boycott' }, {control:'status' , arName: 'بديل', EnName: 'alternative' }, {control:'status' , arName: 'غير متأكد', EnName: 'unsure' }]
+  statusOptions = [{ control: 'status', arName: 'داعم', EnName: 'boycott' }, { control: 'status', arName: 'بديل', EnName: 'alternative' }, { control: 'status', arName: 'غير متأكد', EnName: 'unsure' }]
 
   closeFilterPopup() {
     this.popupService.closeFilterPopup()
@@ -37,8 +37,8 @@ export class FilterPopupComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.getCategories()
     this.filterForm = this.fb.group({
-      category: [''],
-      subCategories: this.fb.array([]), // Array for subcategories (initially empty)
+      category: ['no_select'],
+      subCategories: this.fb.array([]),
       // status: [''] // Status selection (initially empty)
     });
   }
@@ -50,49 +50,45 @@ export class FilterPopupComponent implements OnInit, OnDestroy {
     });
   }
 
+
+
+
   handleCategorySelection(event: Event) {
-    const selectedCategory = this.filterForm.get('category')?.value;
-    if (selectedCategory === 'no_select') {
-      this.showSubCategories = false;
-      return; // No need to proceed further if no category is selected
-    }
-
+    const selectedCategory = (event.target as HTMLSelectElement).value;
     const category = this.categories.find((cat: any) => cat.catEnName === selectedCategory);
-    if (category && category.subCategories) {
-      this.subCategories = category.subCategories;
-      this.showSubCategories = true;
 
-      // Reset selected subcategory when a new category is selected
-      this.filterForm.get('subCategory')?.patchValue('no_select');
+    if (category) {
+      this.subCategories = category.subCategories.map((subCat: any) => subCat.subCatArName);
+      this.showSubCategories = true;
+      this.updateSubCategoryControls(this.subCategories);
     } else {
+      this.subCategories = [];
       this.showSubCategories = false;
+      this.updateSubCategoryControls([]);
     }
   }
 
-
-  onCheckboxChange(event: any) {
-    const isChecked = event.target.checked;
-    const subCategoryValue = event.target.value;
-
-    // Handle checkbox selection logic (e.g., logging)
-    console.log(`Checkbox '${subCategoryValue}' is ${isChecked ? 'checked' : 'unchecked'}`);
+  updateSubCategoryControls(subCategories: string[]) {
+    const subCategoriesArray = this.filterForm.get('subCategories') as FormArray;
+    subCategoriesArray.clear();
+    subCategories.forEach(() => {
+      subCategoriesArray.push(new FormControl(false));
+    });
   }
 
+  get subCategoriesFormArray() {
+    return this.filterForm.get('subCategories') as FormArray;
+  }
 
-  filter(event: Event) {
-    event.preventDefault();
+  filter() {
+    const selectedSubCategories = this.subCategoriesFormArray.value
+      .map((checked: boolean, i: number) => checked ? this.subCategories[i] : null)
+      .filter((v: any) => v !== null);
 
-    const formValues = this.filterForm.value;
-
-    const selectedSubCategories = (formValues.subCategories as string[]);
-    const filter = {
-      category: formValues.category,
-      subCategories: selectedSubCategories,
-    };
-
-    console.log("filter",filter);
-
-
+    console.log({
+      category: this.filterForm.value.category,
+      selectedSubCategories: selectedSubCategories,
+    });
   }
 
   ngOnDestroy(): void {

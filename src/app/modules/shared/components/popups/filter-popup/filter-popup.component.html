@@ -21,9 +21,13 @@
         </div>
         <div class="subCat-col" *ngIf="showSubCategories" @fadeIn>
           <h3>النوع</h3>
-          <div *ngFor="let sub of subCategories">
-            <input type="checkbox" [value]="sub" (change)="onCheckboxChange($event)" formControlName="subCategories">
-            <label for>{{sub}}</label>
+          <div formArrayName="subCategories">
+            <div *ngFor="let sub of subCategories; let i = index">
+              <label>
+                <input type="checkbox" [formControlName]="i">
+                {{ sub }}
+              </label>
+            </div>
           </div>
         </div>
       </div>
@@ -37,7 +41,7 @@
       </div> -->
     </form>
     <div class="filter__footer">
-      <button type="submit" (click)="filter($event)">إعرض النتائج</button>
+      <button type="submit" (click)="filter()">إعرض النتائج</button>
     </div>
   </div>
 </div>
