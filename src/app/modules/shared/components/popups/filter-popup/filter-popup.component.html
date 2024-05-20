@@ -3,7 +3,7 @@
     <div class="filter__header">
       <p>الأقسام والترتيب</p>
       <div>
-        <span>إلغاء التصفية</span>
+        <span (click)="resetFilter()">إلغاء التصفية</span>
         <svg (click)="closeFilterPopup()"><use href="#close-icon"></use></svg>
       </div>
     </div>
@@ -13,28 +13,28 @@
           <h3 class="active">القسم</h3>
           <select id="pet-select"
           formControlName="category"
-            (change)="handleCategorySelection($event)">
+          (change)="handleCategorySelection($event)"
+            >
             <option value="no_select"> --اختر الفئة-- </option>
-            <option *ngFor="let category of categories"
-              [value]="category.catEnName">{{category.catArName}}</option>
+            <option *ngFor="let category of categories" [value]="category.catEnName">{{category.catArName}}</option>
           </select>
         </div>
         <div class="subCat-col" *ngIf="showSubCategories" @fadeIn>
           <h3>النوع</h3>
           <div *ngFor="let sub of subCategories">
-            <input type="checkbox" [value]="sub">
+            <input type="checkbox" [value]="sub" (change)="onCheckboxChange($event)" formControlName="subCategories">
             <label for>{{sub}}</label>
           </div>
         </div>
       </div>
-      <div class="status__section">
+      <!-- <div class="status__section">
         <h3>الحالة</h3>
         <div
-        *ngFor="let option of [{arName:'داعم',EnName:'boycott'},{arName:'بديل',EnName:'alternative'},{arName:'غير متأكد',EnName:'unsure'}]">
-        <input type="checkbox" [id]="option.EnName" [value]="option.EnName" >
+        *ngFor="let option of statusOptions ; let i = index">
+        <input type="checkbox" [formControlName]="option.control"  [id]="option.EnName" [value]="option.EnName" >
         <label [for]="option.EnName">{{ option.arName }}</label>
       </div>
-      </div>
+      </div> -->
     </form>
     <div class="filter__footer">
       <button type="submit" (click)="filter($event)">إعرض النتائج</button>
