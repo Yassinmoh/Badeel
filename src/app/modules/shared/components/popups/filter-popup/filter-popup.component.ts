@@ -23,23 +23,17 @@ export class FilterPopupComponent implements OnInit, OnDestroy {
   categories: Category[] | any = []
   subCategories: any[] = []
   showSubCategories: boolean = false
-
+  formData: object = {}
   statusOptions = [{ control: 'status', arName: 'داعم', EnName: 'boycott' }, { control: 'status', arName: 'بديل', EnName: 'alternative' }, { control: 'status', arName: 'غير متأكد', EnName: 'unsure' }]
 
-  closeFilterPopup() {
-    this.popupService.closeFilterPopup()
-  }
 
-  resetFilter() {
-    this.filterForm.reset()
-  }
 
   ngOnInit() {
     this.getCategories()
     this.filterForm = this.fb.group({
       category: ['no_select'],
       subCategories: this.fb.array([]),
-      // status: [''] // Status selection (initially empty)
+      status: this.fb.array(this.statusOptions.map(() => new FormControl(false)))
     });
   }
 
@@ -80,15 +74,36 @@ export class FilterPopupComponent implements OnInit, OnDestroy {
     return this.filterForm.get('subCategories') as FormArray;
   }
 
+  get statusFormArray() {
+    return this.filterForm.get('status') as FormArray;
+  }
+
   filter() {
     const selectedSubCategories = this.subCategoriesFormArray.value
       .map((checked: boolean, i: number) => checked ? this.subCategories[i] : null)
       .filter((v: any) => v !== null);
 
-    console.log({
+    const selectedStatuses = this.statusFormArray.value
+      .map((checked: boolean, i: number) => checked ? this.statusOptions[i].arName : null)
+      .filter((v: any) => v !== null);
+
+    this.formData = {
       category: this.filterForm.value.category,
       selectedSubCategories: selectedSubCategories,
-    });
+      selectedStatuses: selectedStatuses
+    };
+    console.log("formData", this.formData);
+
+  }
+
+  closeFilterPopup() {
+    this.popupService.closeFilterPopup()
+  }
+
+  resetFilter() {
+    this.filterForm.reset()
+    this.showSubCategories = false
+    this.filterForm.controls['category'].patchValue('no_select')
   }
 
   ngOnDestroy(): void {

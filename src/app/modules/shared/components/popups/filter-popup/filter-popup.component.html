@@ -14,7 +14,8 @@
           <select id="pet-select"
           formControlName="category"
           (change)="handleCategorySelection($event)"
-            >
+            class="custome-arrow"
+          >
             <option value="no_select"> --اختر الفئة-- </option>
             <option *ngFor="let category of categories" [value]="category.catEnName">{{category.catArName}}</option>
           </select>
@@ -31,14 +32,15 @@
           </div>
         </div>
       </div>
-      <!-- <div class="status__section">
+      <div class="status__section">
         <h3>الحالة</h3>
-        <div
-        *ngFor="let option of statusOptions ; let i = index">
-        <input type="checkbox" [formControlName]="option.control"  [id]="option.EnName" [value]="option.EnName" >
-        <label [for]="option.EnName">{{ option.arName }}</label>
+        <div formArrayName="status" >
+          <div *ngFor="let option of statusOptions; let i = index" [ngStyle]="{ 'display':'flex', 'align-items': 'center' , 'gap':'0.5rem' }">
+            <input type="checkbox" [formControlName]="i" [id]="option.EnName" [value]="option.EnName">
+            <label [for]="option.EnName">{{ option.arName }}</label>
+          </div>
+        </div>
       </div>
-      </div> -->
     </form>
     <div class="filter__footer">
       <button type="submit" (click)="filter()">إعرض النتائج</button>
