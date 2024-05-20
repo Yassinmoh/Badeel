@@ -28,5 +28,11 @@ export const productReducer = createReducer(
       ...state,
       error: action.error
     }
+  }),
+  on(productActions.searchProducts,(state:ProductState,action)=>{
+    return {
+      ...state,
+
+    }
   })
 )

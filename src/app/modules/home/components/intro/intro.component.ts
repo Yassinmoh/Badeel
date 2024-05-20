@@ -11,9 +11,9 @@ import { Product } from '../../../core/model/Product';
   styleUrl: './intro.component.scss'
 })
 export class IntroComponent {
-  @Output() onProductsFiltered = new EventEmitter<Product[]>();
+  @Output() onSearch = new EventEmitter<Product[]>();
 
   getSearchResult(products: Product[]): void {
-    this.onProductsFiltered.emit(products);
+    this.onSearch.emit(products);
   }
 }

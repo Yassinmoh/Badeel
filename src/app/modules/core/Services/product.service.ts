@@ -65,9 +65,14 @@ export class ProductService {
     ).valueChanges({ idField: 'productId' });
   }
 
+
   searchProductsFilter(searchTerm: string): Observable<Product[]> {
     return this.getProducts().pipe(
-      map(products => products.filter(product => product.productArName?.includes(searchTerm)))
+      map(products =>
+        products.filter(product =>
+          (product.productEnName?.includes(searchTerm) || product.productArName?.includes(searchTerm))
+        )
+      )
     );
   }
 

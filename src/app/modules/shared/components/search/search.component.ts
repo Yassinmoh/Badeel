@@ -4,7 +4,9 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ProductService } from '../../../core/Services/product.service';
 import { Product } from '../../../core/model/Product';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../../store/app.reducer';
+import * as productActions from '../../../../store/products/product.actions'
 @Component({
   selector: 'app-search',
   standalone: true,
@@ -13,12 +15,15 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
   styleUrl: './search.component.scss'
 })
 export class SearchComponent implements OnInit {
+
   @ViewChild('searchBody') searchBody!: ElementRef;
   @Output() onSearch = new EventEmitter<Product[]>();
   searchForm!: FormGroup
   fb = inject(FormBuilder)
   router = inject(Router)
   route = inject(ActivatedRoute)
+  store = inject(Store<AppState>)
+
   productService = inject(ProductService)
   isInputEmpty: boolean = true
   searchTerm: string = '';
@@ -33,11 +38,12 @@ export class SearchComponent implements OnInit {
   submit(e: Event) {
     e.preventDefault();
     const searchTerm = this.searchForm.controls['searchInput'].value;
-    this.productService.searchProductsFilter(searchTerm).subscribe(filteredProducts => {
-      this.onSearch.emit(filteredProducts)
-      this.handleQueryParams(searchTerm)
-      this.searchForm?.reset();
-    });
+    this.store.dispatch(productActions.searchProducts({searchTrem:searchTerm}))
+    // this.productService.searchProductsFilter(searchTerm).subscribe(filteredProducts => {
+    //   this.onSearch.emit(filteredProducts)
+    //   this.handleQueryParams(searchTerm)
+    //   this.searchForm?.reset();
+    // });
     window.scrollTo({ top: 400, behavior: "smooth" });
   }
 

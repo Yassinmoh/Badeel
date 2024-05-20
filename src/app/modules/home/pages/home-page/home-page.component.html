@@ -1,6 +1,6 @@
 <app-filter-popup (onFilter)="filter($event)" *ngIf="popupService.openFilter | async"></app-filter-popup>
 <section class="homepagee__section">
-  <app-intro (onProductsFiltered)="updateSearchResults($event)"></app-intro>
+  <app-intro (onSearch)="updateSearchResults($event)"></app-intro>
   <app-active-filter></app-active-filter>
   <app-product-details-popup *ngIf="selectedProduct" [selectedProduct]="selectedProduct" (onClose)="closePopup()"></app-product-details-popup>
   <section class="products__container" *ngIf="products$ | async as products">
