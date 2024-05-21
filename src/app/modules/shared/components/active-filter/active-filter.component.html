@@ -7,34 +7,45 @@
       <span>الترتيب والأقسام</span>
     </div>
     <div class="icons">
-      <svg (click)="toggleClick('table')" [attr.aria-pressed]="(currentViewMood$ | async) === 'table'">
+      <svg (click)="toggleClick('table')"
+        [attr.aria-pressed]="(currentViewMood$ | async) === 'table'">
         <use href="#table_icon"></use>
       </svg>
-      <svg (click)="toggleClick('grid')" [attr.aria-pressed]="(currentViewMood$ | async) === 'grid'">
+      <svg (click)="toggleClick('grid')"
+        [attr.aria-pressed]="(currentViewMood$ | async) === 'grid'">
         <use href="#grid_icon"></use>
       </svg>
     </div>
   </div>
-  <div class="active__filter_tags">
-    <div class="active__item">
-      <span>الحالة:</span>
-      <span class="bold">داعم</span>
-      <svg><use href="#close-icon"></use></svg>
+  <div class="active__filter_tags" *ngIf="currentActiveFilterItems$ | async as ActiveFilterItems">
+
+    <div *ngIf="ActiveFilterItems?.category as categories">
+      <div *ngFor="let category of categories" class="active__item">
+        <span>الفئة:</span>
+        <span class="bold">{{category}}</span>
+        <svg (click)="handleClick('category',category)"><use
+            href="#close-icon"></use></svg>
+      </div>
     </div>
-    <div class="active__item">
-      <span>الشركات:</span>
-      <span class="bold">تكنولوجيا</span>
-      <svg><use href="#close-icon"></use></svg>
+
+    <div *ngIf="ActiveFilterItems?.selectedSubCategories as SubCategories"
+      class="center" [ngStyle]="{'display':'flex'}">
+      <div *ngFor="let sub of SubCategories" class="active__item center">
+        <span>الأنواع:</span>
+        <span class="bold">{{sub}}</span>
+        <svg (click)="handleClick('selectedSubCategories',sub)"><use
+            href="#close-icon"></use></svg>
+      </div>
     </div>
-    <div class="active__item">
-      <span>الحالة:</span>
-      <span class="bold">داعم</span>
-      <svg><use href="#close-icon"></use></svg>
-    </div>
-    <div class="active__item">
-      <span>الحالة:</span>
-      <span class="bold">داعم</span>
-      <svg><use href="#close-icon"></use></svg>
+
+    <div *ngIf="ActiveFilterItems?.selectedStatuses as Statuses" class="center"
+      [ngStyle]="{'display':'flex'}">
+      <div *ngFor="let status of Statuses" class="active__item center">
+        <span>الحالة:</span>
+        <span class="bold">{{status}}</span>
+        <svg (click)="handleClick('selectedStatuses',status)"><use
+            href="#close-icon"></use></svg>
+      </div>
     </div>
   </div>
 </section>

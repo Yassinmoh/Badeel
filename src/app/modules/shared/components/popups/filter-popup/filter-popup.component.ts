@@ -5,6 +5,9 @@ import { HttpClient } from '@angular/common/http';
 import { Category } from '../../../../core/model/Category';
 import { FormBuilder, FormsModule, ReactiveFormsModule, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../../../store/app.reducer';
+import * as ProductActions from '../../../../../store/products/product.actions'
 
 @Component({
   selector: 'app-filter-popup',
@@ -18,6 +21,9 @@ export class FilterPopupComponent implements OnInit, OnDestroy {
   popupService = inject(PopupService)
   http = inject(HttpClient)
   fb = inject(FormBuilder)
+  store = inject(Store<AppState>)
+
+
   @Output() onFilter = new EventEmitter<any>()
   filterForm!: FormGroup
   categories: Category[] | any = []
@@ -88,12 +94,11 @@ export class FilterPopupComponent implements OnInit, OnDestroy {
       .filter((v: any) => v !== null);
 
     this.formData = {
-      category: this.filterForm.value.category,
+      category:[ this.filterForm.value.category],
       selectedSubCategories: selectedSubCategories,
       selectedStatuses: selectedStatuses
     };
-    console.log("formData", this.formData);
-
+    this.store.dispatch(ProductActions.setCurrentActiveFilterItems({CurrentActiveFilterItems:this.formData}))
   }
 
   closeFilterPopup() {

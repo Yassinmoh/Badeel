@@ -18,3 +18,5 @@ export const getSearchResults = createSelector(
     return products.filter(product => (product.productEnName?.includes(lowercaseSearchTerm) || product.productArName?.includes(lowercaseSearchTerm)))
   }
 )
+
+export const getCurrentActiveFilterItems = createSelector(productsFeaturedState,state => state.activeFilterItems)
