@@ -18,8 +18,8 @@ export class SubmitPageComponent implements OnInit {
   private fb = inject(FormBuilder);
   productForm!: FormGroup;
   statusInput: string = ''
-  categories: Category[] | any=[]
-  subCategories: string[] =[]
+  categories: Category[] | any = []
+  subCategories: any
 
   constructor(
     public firestore: AngularFirestore,
@@ -79,8 +79,9 @@ export class SubmitPageComponent implements OnInit {
     const selectedCategory = (event.target as HTMLSelectElement).value;
     const category = this.categories.find((cat: any) => cat.catEnName === selectedCategory);
     if (category && category.subCategories) {
-      this.subCategories= category.subCategories
-      // this.renderSubcategories(category.subCategories);
+      this.subCategories = category.subCategories
+      console.log("this.subCategories", this.subCategories);
+
     }
   }
 

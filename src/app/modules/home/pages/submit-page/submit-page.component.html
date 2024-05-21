@@ -60,7 +60,7 @@
             <label for=""> النوع :</label>
             <select formControlName="subCategory" id="pet-select" (change)="handleMainCategorySelection($event)">
               <option value=""> --اختر النوع-- </option>
-              <option *ngFor="let subCategory of subCategories"  [value]="subCategory">{{subCategory}}</option>
+              <option *ngFor="let subCategory of subCategories;let i = index"  [value]="subCategory.subCatArName">{{subCategory.subCatArName}}</option>
             </select>
           </div>
         </div>

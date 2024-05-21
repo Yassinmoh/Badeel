@@ -10,24 +10,24 @@
 }
 
 
-::-webkit-scrollbar {
+html::-webkit-scrollbar {
   width: 4px;
   height: 3px;
   border-radius: 20px;
 }
 
 /* Color of the scrollbar track (background) */
-::-webkit-scrollbar-track {
+html::-webkit-scrollbar-track {
   background: transparent
 }
 
 /* Color of the scrollbar thumb (the draggable part) */
-::-webkit-scrollbar-thumb {
+html::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.15);
 }
 
 /* Rounded corners for the scrollbar thumb */
-::-webkit-scrollbar-thumb:hover {
+html::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 0, 0, 0.15);
 }
 
