@@ -5,8 +5,11 @@ import { Product } from "../../modules/core/model/Product";
 
 const productsFeaturedState = createFeatureSelector<ProductState>('Product')
 
+//List Products:
 export const getAllProducts = createSelector(productsFeaturedState, state => state.products)
 export const getError = createSelector(productsFeaturedState, state => state.error)
+
+//Search PRoducts:
 export const getSearchResults = createSelector(
   productsFeaturedState,
   getAllProducts,
@@ -19,4 +22,7 @@ export const getSearchResults = createSelector(
   }
 )
 
+//Filter PRoducts:
 export const getCurrentActiveFilterItems = createSelector(productsFeaturedState,state => state.activeFilterItems)
+
+

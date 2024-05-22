@@ -12,7 +12,7 @@ import { ChangeDetectorRef } from '@angular/core';
   styleUrl: './typewriter.component.scss',
 })
 export class TypewriterComponent implements OnInit, AfterViewInit, OnDestroy {
-  constructor( private cdref: ChangeDetectorRef ) {}
+  constructor(private cdref: ChangeDetectorRef) {}
 
   @ViewChild('typewriter') typewriterElement!: ElementRef;
 
@@ -42,7 +42,7 @@ export class TypewriterComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit() {
 
       this.initializeTyped();
-
+      this.cdref.detectChanges();
   }
 
   ngOnDestroy() {

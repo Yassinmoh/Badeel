@@ -10,24 +10,24 @@
 }
 
 
-html::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 4px;
   height: 3px;
   border-radius: 20px;
 }
 
 /* Color of the scrollbar track (background) */
-html::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: transparent
 }
 
 /* Color of the scrollbar thumb (the draggable part) */
-html::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.15);
 }
 
 /* Rounded corners for the scrollbar thumb */
-html::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 0, 0, 0.15);
 }
 
@@ -38,12 +38,12 @@ html {
 }
 
 /* Color of the scrollbar thumb (the draggable part) */
-html::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.15);
 }
 
 /* Rounded corners for the scrollbar thumb */
-html::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
   background-color: rgba(0, 0, 0, 0.15);
 }
 

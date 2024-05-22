@@ -5,7 +5,7 @@ import { ProductService } from '../../../core/Services/product.service';
 import { Product } from '../../../core/model/Product';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../../../store/app.reducer';
+import { AppState } from '../../../../store/App/app.reducer';
 import * as productActions from '../../../../store/products/product.actions'
 @Component({
   selector: 'app-search',

@@ -2,7 +2,7 @@ import { Product } from './../model/Product';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs/internal/Observable';
-import { BehaviorSubject, map, merge, of, pairwise } from 'rxjs';
+import { map } from 'rxjs';
 
 
 
@@ -11,8 +11,6 @@ import { BehaviorSubject, map, merge, of, pairwise } from 'rxjs';
 })
 export class ProductService {
 
-  private searchResultsSubject = new BehaviorSubject<Product[]>([]);
-  searchResults$ = this.searchResultsSubject.asObservable();
   cachedProducts: Product[] = []
   constructor(private firestore: AngularFirestore) {
     this.loadAndCachedData()
@@ -50,6 +48,7 @@ export class ProductService {
     return productRef.delete();
   }
 
+  // Load And Cache Data:
   loadAndCachedData() {
     this.getProducts().subscribe(res => {
       this.cachedProducts = res
@@ -65,7 +64,7 @@ export class ProductService {
     ).valueChanges({ idField: 'productId' });
   }
 
-
+  // Search products:
   searchProductsFilter(searchTerm: string): Observable<Product[]> {
     return this.getProducts().pipe(
       map(products =>
@@ -76,7 +75,14 @@ export class ProductService {
     );
   }
 
-  updateSearchResults(results: Product[]) {
-    this.searchResultsSubject.next(results);
+  // Filter Products:
+  filterProducts(products: Product[], currentActiveFilter: any): Product[] {
+    return products.filter(product => {
+      const categoryMatch = currentActiveFilter.category.includes(product.category);
+      const subCategoryMatch = currentActiveFilter.selectedSubCategories.includes(product.subCategory);
+      const statusMatch = currentActiveFilter.selectedStatuses.includes(product.status);
+      return categoryMatch || subCategoryMatch || statusMatch;
+    });
   }
+
 }

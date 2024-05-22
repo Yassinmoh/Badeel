@@ -3,10 +3,10 @@ import { Component, OnInit, inject } from '@angular/core';
 import { PopupService } from '../../../core/Services/popup.service';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../../../store/app.reducer';
-import * as appActions from '../../../../store/app.actions'
+import { AppState } from '../../../../store/App/app.reducer';
+import * as appActions from '../../../../store/App/app.actions'
 import * as productActions from '../../../../store/products/product.actions'
-import { getCurrentViewMood } from '../../../../store/app.selectors';
+import { getCurrentViewMood } from '../../../../store/App/app.selectors';
 import { CommonModule } from '@angular/common';
 import { getCurrentActiveFilterItems } from '../../../../store/products/product.selectors';
 
@@ -25,11 +25,16 @@ export class ActiveFilterComponent implements OnInit {
   pressed: string = '';
   currentViewMood$!: Observable<string>
   currentActiveFilterItems$!:Observable<any>
-
+  filterBy:any
   ngOnInit(): void {
     this.currentViewMood$ = this.store.select(getCurrentViewMood)
-    this.currentActiveFilterItems$ = this.store.select(getCurrentActiveFilterItems).pipe(tap(ele => console.log(ele)
-    ))
+    this.currentActiveFilterItems$ = this.store.select(getCurrentActiveFilterItems).pipe(
+      tap((data) =>{
+        console.log(data)
+        this.filterBy = data
+      }),
+
+    )
   }
 
 
@@ -42,8 +47,9 @@ export class ActiveFilterComponent implements OnInit {
     this.popupService.openFilterPopup()
   }
 
-  handleClick(filterName: string, value: string) {
+  removeTag(filterName: string, value: string) {
     this.store.dispatch(productActions.removeActiveFilterItem({ filterName, value }));
+    this.store.dispatch(productActions.filterProducts({filterBy:this.filterBy}))
   }
 
 }

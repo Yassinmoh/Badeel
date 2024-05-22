@@ -44,21 +44,12 @@ export const productReducer = createReducer(
     }
   }),
   on(productActions.removeActiveFilterItem,(state:ProductState,action)=>{
-    console.log("action", state.activeFilterItems?.category)
-    console.log("action.value",typeof action.value)
-
     return{
       ...state,
       activeFilterItems:{
         ...state.activeFilterItems,
         [action.filterName]: state.activeFilterItems?.[action.filterName]?.filter((item: string) => {
-          // when filterName == 'category' typeof action.value == object
-          // so we need to handle it and convert to string to be able to remove the active item
-          if (typeof action.value === 'string') {
             return item !== action.value;
-          } else {
-            return item !== String(action.value);
-          }
         })
       }
     }

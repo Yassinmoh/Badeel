@@ -6,7 +6,7 @@ import { Category } from '../../../../core/model/Category';
 import { FormBuilder, FormsModule, ReactiveFormsModule, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../../../../store/app.reducer';
+import { AppState } from '../../../../../store/App/app.reducer';
 import * as ProductActions from '../../../../../store/products/product.actions'
 
 @Component({
@@ -58,7 +58,7 @@ export class FilterPopupComponent implements OnInit, OnDestroy {
     const category = this.categories.find((cat: any) => cat.catEnName === selectedCategory);
 
     if (category) {
-      this.subCategories = category.subCategories.map((subCat: any) => subCat.subCatArName);
+      this.subCategories = category.subCategories.map((subCat: any) => subCat.subCatEnName);
       this.showSubCategories = true;
       this.updateSubCategoryControls(this.subCategories);
     } else {
@@ -90,7 +90,7 @@ export class FilterPopupComponent implements OnInit, OnDestroy {
       .filter((v: any) => v !== null);
 
     const selectedStatuses = this.statusFormArray.value
-      .map((checked: boolean, i: number) => checked ? this.statusOptions[i].arName : null)
+      .map((checked: boolean, i: number) => checked ? this.statusOptions[i].EnName : null)
       .filter((v: any) => v !== null);
 
     this.formData = {
@@ -99,6 +99,8 @@ export class FilterPopupComponent implements OnInit, OnDestroy {
       selectedStatuses: selectedStatuses
     };
     this.store.dispatch(ProductActions.setCurrentActiveFilterItems({CurrentActiveFilterItems:this.formData}))
+    this.store.dispatch(ProductActions.filterProducts({filterBy:this.formData}))
+    this.closeFilterPopup()
   }
 
   closeFilterPopup() {

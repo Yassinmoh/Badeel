@@ -25,7 +25,7 @@
           <div formArrayName="subCategories">
             <div *ngFor="let sub of subCategories; let i = index">
               <label>
-                <input type="checkbox" [formControlName]="i">
+                <input type="checkbox" [formControlName]="i" [value]="sub.subCatArName">
                 {{ sub }}
               </label>
             </div>

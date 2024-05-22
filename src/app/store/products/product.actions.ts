@@ -11,5 +11,6 @@ export const loadProductsFailure = createAction('[Products API] Load Product Fai
 export const searchProducts = createAction('[Product List] Search products',props<{searchTrem:string}>())
 
 //Filter:
+export const filterProducts = createAction('[Filter] Filter Products',props<{filterBy:any}>())
 export const setCurrentActiveFilterItems = createAction('[Filter] Set Current Active Filter Items',props<{CurrentActiveFilterItems:any}>())
 export const removeActiveFilterItem = createAction('[Filter] Remove Active Filter Item',props<{filterName: string; value: string }>() )
