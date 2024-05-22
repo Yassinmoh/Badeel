@@ -6,14 +6,16 @@ export interface ProductState {
   products: Product[];
   currentProductId: number | null;
   error: string;
-  activeFilterItems: any | null
+  activeFilterItems: any | null;
+  searchTerm:string
 }
 
 const initState: ProductState = {
   products: [],
   currentProductId: null,
   error: '',
-  activeFilterItems: {}
+  activeFilterItems: {},
+  searchTerm:''
 }
 
 export const productReducer = createReducer(
@@ -31,27 +33,37 @@ export const productReducer = createReducer(
       error: action.error
     }
   }),
-  on(productActions.searchProducts, (state: ProductState, action) => {
+
+  on(productActions.searchProducts, (state: ProductState) => {
     return {
       ...state,
-
     }
   }),
+
+  on(productActions.setSearchTerm,(state:ProductState,action)=>{
+    return{
+      ...state,
+      searchTerm:action.searchTerm
+    }
+  }),
+
   on(productActions.setCurrentActiveFilterItems, (state: ProductState, action) => {
     return {
       ...state,
       activeFilterItems: action.CurrentActiveFilterItems
     }
   }),
-  on(productActions.removeActiveFilterItem,(state:ProductState,action)=>{
-    return{
+
+  on(productActions.removeActiveFilterItem, (state: ProductState, action) => {
+    return {
       ...state,
-      activeFilterItems:{
+      activeFilterItems: {
         ...state.activeFilterItems,
         [action.filterName]: state.activeFilterItems?.[action.filterName]?.filter((item: string) => {
-            return item !== action.value;
+          return item !== action.value;
         })
       }
     }
   })
+
 )

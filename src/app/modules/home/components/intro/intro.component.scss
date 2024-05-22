@@ -12,3 +12,14 @@
     transform: translateY(-50%);
   }
 }
+
+
+@include DesktopScreen {
+  :host{
+    .intro{
+      p{
+        top: 52.5%;
+      }
+    }
+  }
+}

@@ -8,8 +8,8 @@ export const loadProductsSuccessfuly = createAction('[Products API] Load Product
 export const loadProductsFailure = createAction('[Products API] Load Product Failure',props<{error:string}>());
 
 //Search:
-export const searchProducts = createAction('[Product List] Search products',props<{searchTrem:string}>())
-
+export const searchProducts = createAction('[Product List] Search products',props<{searchTerm:string}>())
+export const setSearchTerm= createAction('[Product Search] Set Search Trem',props<{searchTerm:string}>())
 //Filter:
 export const filterProducts = createAction('[Filter] Filter Products',props<{filterBy:any}>())
 export const setCurrentActiveFilterItems = createAction('[Filter] Set Current Active Filter Items',props<{CurrentActiveFilterItems:any}>())

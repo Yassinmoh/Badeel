@@ -45,7 +45,7 @@ export class ProductsEffects {
           );
         } else {
           // In case user dispatch search Action:
-          const searchTerm = action.searchTrem;
+          const searchTerm = action.searchTerm;
           return this.productsService.searchProductsFilter(searchTerm).pipe(
             map(products => productActions.loadProductsSuccessfuly({ products })),
             tap((result) => console.log("Search Result", result)),

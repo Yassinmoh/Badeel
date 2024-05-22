@@ -9,7 +9,7 @@ const productsFeaturedState = createFeatureSelector<ProductState>('Product')
 export const getAllProducts = createSelector(productsFeaturedState, state => state.products)
 export const getError = createSelector(productsFeaturedState, state => state.error)
 
-//Search PRoducts:
+//Search Products:
 export const getSearchResults = createSelector(
   productsFeaturedState,
   getAllProducts,
@@ -21,6 +21,8 @@ export const getSearchResults = createSelector(
     return products.filter(product => (product.productEnName?.includes(lowercaseSearchTerm) || product.productArName?.includes(lowercaseSearchTerm)))
   }
 )
+
+export const getSerchTerm =createSelector(productsFeaturedState,state => state.searchTerm)
 
 //Filter PRoducts:
 export const getCurrentActiveFilterItems = createSelector(productsFeaturedState,state => state.activeFilterItems)

@@ -37,11 +37,12 @@ export class SearchComponent implements OnInit {
 
   submit(e: Event) {
     e.preventDefault();
-    const searchTerm = this.searchForm.controls['searchInput'].value;
-    this.store.dispatch(productActions.searchProducts({searchTrem:searchTerm}))
+    this.searchTerm = this.searchForm.controls['searchInput'].value;
+    this.store.dispatch(productActions.searchProducts({searchTerm:this.searchTerm}))
+    this.store.dispatch(productActions.setSearchTerm({searchTerm:this.searchTerm}))
     // this.productService.searchProductsFilter(searchTerm).subscribe(filteredProducts => {
     //   this.onSearch.emit(filteredProducts)
-    //   this.handleQueryParams(searchTerm)
+      // this.handleQueryParams(this.searchTerm)
     //   this.searchForm?.reset();
     // });
     window.scrollTo({ top: 400, behavior: "smooth" });
