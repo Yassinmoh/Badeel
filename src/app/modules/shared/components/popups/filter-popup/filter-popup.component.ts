@@ -40,7 +40,7 @@ export class FilterPopupComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.filterForm = this.fb.group({
-      category: [''],
+      category: ['جميع المنتجات'],
       subCategories: this.fb.array([]),
       status: this.fb.array(this.statusOptions.map(() => new FormControl(false)))
     });
@@ -108,7 +108,7 @@ export class FilterPopupComponent implements OnInit, OnDestroy {
   resetFilter() {
     this.filterForm.reset()
     this.showSubCategories = false
-    this.filterForm.controls['category'].patchValue('no_select')
+    this.filterForm.controls['category'].patchValue('جميع المنتجات')
   }
 
   ngOnDestroy(): void {

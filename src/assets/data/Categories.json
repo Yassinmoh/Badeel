@@ -113,6 +113,10 @@
         "subCatEnName": "Desserts"
       },
       {
+        "subCatArName": "مقهي",
+        "subCatEnName": "Cafe"
+      },
+      {
         "subCatArName": "قهوة",
         "subCatEnName": "Coffee"
       }

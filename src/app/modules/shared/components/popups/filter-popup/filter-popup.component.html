@@ -16,7 +16,7 @@
           (change)="handleCategorySelection($event)"
             class="custome-arrow"
           >
-            <option value="no_select"> --اختر الفئة-- </option>
+            <option value="جميع المنتجات"> جميع المنتجات </option>
             <option *ngFor="let category of categories" [value]="category.catEnName">{{category.catArName}}</option>
           </select>
         </div>
