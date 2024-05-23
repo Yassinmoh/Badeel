@@ -4,15 +4,19 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { CommonModule } from '@angular/common';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { ProductService } from '../../../core/Services/product.service';
-import { HttpClient } from '@angular/common/http';
 import { Category } from '../../../core/model/Category';
-
+import { CategoryService } from '../../../core/Services/category.service';
+import { Store } from '@ngrx/store';
+import * as categoryActions from '../../../../store/categories/category.actions'
+import { getCategories } from '../../../../store/categories/category.selectors';
+import { tap } from 'rxjs';
 @Component({
   selector: 'app-submit-page',
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule, ToastrModule, FormsModule],
   templateUrl: './submit-page.component.html',
   styleUrls: ['./submit-page.component.scss'],
+  providers: [CategoryService]
 })
 export class SubmitPageComponent implements OnInit {
   private fb = inject(FormBuilder);
@@ -25,7 +29,8 @@ export class SubmitPageComponent implements OnInit {
     public firestore: AngularFirestore,
     private productsService: ProductService,
     private toastr: ToastrService,
-    private http: HttpClient
+    private categoryService:CategoryService,
+    private store:Store
   ) { }
 
   ngOnInit(): void {
@@ -41,7 +46,11 @@ export class SubmitPageComponent implements OnInit {
     });
 
     this.productForm.get('status')?.valueChanges.subscribe(value => this.statusInput = value);
-    this.getCategories()
+    this.store.dispatch(categoryActions.loadCategories())
+    this.store.select(getCategories).pipe(
+      tap((data) => {this.categories=data[0]})
+    ).subscribe()
+    // this.categoryService.getCategories()
   }
 
   ResetForm() {
@@ -67,25 +76,12 @@ export class SubmitPageComponent implements OnInit {
     }
   }
 
-  getCategories() {
-    return this.http.get(`../../../../../assets/data/Categories.json`).subscribe(data => {
-      console.log('Categories:', data);
-      this.categories = data
-    });
-  }
-
-
   handleMainCategorySelection(event: Event) {
     const selectedCategory = (event.target as HTMLSelectElement).value;
     const category = this.categories.find((cat: any) => cat.catEnName === selectedCategory);
     if (category && category.subCategories) {
       this.subCategories = category.subCategories
       console.log("this.subCategories", this.subCategories);
-
     }
   }
-
-  // renderSubcategories(subcategories: string[]) {
-
-  // }
 }

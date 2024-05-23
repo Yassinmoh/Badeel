@@ -8,6 +8,10 @@ import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../../store/App/app.reducer';
 import * as ProductActions from '../../../../../store/products/product.actions'
+import { CategoryState } from '../../../../../store/categories/category.reducer';
+import * as categoryActions from  '../../../../../store/categories/category.actions';
+import { getCategories } from '../../../../../store/categories/category.selectors';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-filter-popup',
@@ -21,7 +25,7 @@ export class FilterPopupComponent implements OnInit, OnDestroy {
   popupService = inject(PopupService)
   http = inject(HttpClient)
   fb = inject(FormBuilder)
-  store = inject(Store<AppState>)
+  store = inject(Store<AppState | CategoryState>)
 
 
   @Output() onFilter = new EventEmitter<any>()
@@ -35,23 +39,17 @@ export class FilterPopupComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-    this.getCategories()
     this.filterForm = this.fb.group({
-      category: ['no_select'],
+      category: [''],
       subCategories: this.fb.array([]),
       status: this.fb.array(this.statusOptions.map(() => new FormControl(false)))
     });
+
+    this.store.dispatch(categoryActions.loadCategories())
+    this.store.select(getCategories).pipe(
+      tap((data) => {this.categories=data[0]})
+    ).subscribe()
   }
-
-  getCategories() {
-    return this.http.get(`../../../../../assets/data/Categories.json`).subscribe(data => {
-      console.log('Categories:', data);
-      this.categories = data
-    });
-  }
-
-
-
 
   handleCategorySelection(event: Event) {
     const selectedCategory = (event.target as HTMLSelectElement).value;

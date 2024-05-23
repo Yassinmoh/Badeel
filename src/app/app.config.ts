@@ -11,12 +11,15 @@ import { provideStore } from '@ngrx/store';
 import { reducers, metaReducers } from './store';
 import { provideEffects } from '@ngrx/effects';
 import { ProductsEffects } from './store/products/product.effects';
+import { CategoryEffect } from './store/categories/category.effects';
+import { provideHttpClient } from '@angular/common/http';
 
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideAnimations(),
+    provideHttpClient(),
     provideToastr({ closeButton: false }),
     importProvidersFrom([
         provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
@@ -24,6 +27,6 @@ export const appConfig: ApplicationConfig = {
     ]),
     { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig },
     provideStore(reducers, { metaReducers }),
-    provideEffects([ProductsEffects])
+    provideEffects([ProductsEffects,CategoryEffect])
 ]
 };

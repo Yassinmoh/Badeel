@@ -5,7 +5,7 @@ import { ProductGridCardComponent } from '../../components/product-grid-card/pro
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { ProductRowCardComponent } from '../../components/product-row-card/product-row-card.component';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ProductService } from '../../../core/Services/product.service';
 import { SharedModule } from '../../../shared/shared.module';
 import { Product } from '../../../core/model/Product';
@@ -13,8 +13,10 @@ import { PopupService } from '../../../core/Services/popup.service';
 import { SpinnerComponent } from '../../../shared/components/spinner/spinner.component';
 import { Store } from '@ngrx/store';
 import { ProductState } from '../../../../store/products/product.reducer';
-import { getAllProducts, getCurrentActiveFilterItems } from '../../../../store/products/product.selectors';
+import { getAllProducts } from '../../../../store/products/product.selectors';
 import * as productsActions from '../../../../store/products/product.actions'
+import { CategoryService } from '../../../core/Services/category.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-home-page',
@@ -55,6 +57,8 @@ export class HomePageComponent implements OnInit {
     })
       this.products$ = this.store.select(getAllProducts)
       this.store.dispatch(productsActions.loadProducts())
+
+
   }
 
   getFilterdData(filtereProducts: Product[]) {
