@@ -1,4 +1,3 @@
-<div *ngIf="searchTerm$ | async as searchTerm">
-
-  <p>no-data-found works {{searchTerm}}!</p>
-</div>
+<section *ngIf="searchTerm$ | async as searchTerm">
+  <p>لا يوجد بيانات بهذاالإسم: <span>{{searchTerm}}</span></p>
+</section>

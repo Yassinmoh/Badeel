@@ -1,0 +1,10 @@
+@import 'common';
+section{
+  p{
+    @include textStyle(17px, 1.5, var(--primary-font), var(--c-font-1), 500);
+    text-align: center;
+    span{
+      @include textStyle(18.5px, 1.5, var(--primary-font), var(--c-action), 700);
+    }
+  }
+}
