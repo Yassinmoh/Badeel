@@ -64,6 +64,13 @@ export const productReducer = createReducer(
         })
       }
     }
+  }),
+
+  on(productActions.resetActiveFilterItems,(state:ProductState)=>{
+    return{
+      ...state,
+      activeFilterItems:{}
+    }
   })
 
 )

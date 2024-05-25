@@ -39,13 +39,17 @@ section {
       align-items: center;
       gap: 0.4rem;
 
+      .reset {
+        display: none;
+      }
+
       svg {
         width: 24px;
         height: 24px;
         color: var(--c-gray-2);
         cursor: pointer;
 
-        &[aria-pressed="true"]{
+        &[aria-pressed="true"] {
           color: var(--c-action);
         }
       }
@@ -72,10 +76,11 @@ section {
       gap: 0.5rem;
       margin: 0.4rem;
       cursor: pointer;
+
       span {
         @include textStyle(16px, 1.5, var(--primary-font), var(--c-font-2), 400);
 
-        &.bold{
+        &.bold {
           @include textStyle(16px, 1.5, var(--primary-font), var(--c-font-1), 700);
         }
       }
@@ -97,6 +102,14 @@ section {
       .filter_icons {
         .icons {
           visibility: visible;
+
+          .reset {
+            display: block;
+            margin-left: 1rem;
+            cursor: pointer;
+            text-decoration: underline;
+            @include textStyle(16px, 1.5, var(--primary-font), var(--c-action), 400);
+          }
         }
       }
     }
@@ -104,8 +117,8 @@ section {
 }
 
 @include LargeDesktopScreen {
-  :host{
-    section{
+  :host {
+    section {
       padding: 0 8rem
     }
   }

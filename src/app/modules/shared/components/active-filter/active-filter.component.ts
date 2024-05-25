@@ -24,19 +24,21 @@ export class ActiveFilterComponent implements OnInit {
 
   pressed: string = '';
   currentViewMood$!: Observable<string>
-  currentActiveFilterItems$!:Observable<any>
-  filterBy:any
+  currentActiveFilterItems$!: Observable<any>
+  filterBy: any
+  hasActiveFilters: boolean = false
+
+
   ngOnInit(): void {
     this.currentViewMood$ = this.store.select(getCurrentViewMood)
     this.currentActiveFilterItems$ = this.store.select(getCurrentActiveFilterItems).pipe(
-      tap((data) =>{
+      tap((data) => {
         console.log(data)
         this.filterBy = data
+        this.hasActiveFilters = Object.values(this.filterBy).some((value: any) => value.length > 0);
       }),
-
     )
   }
-
 
   toggleClick(type: string): void {
     this.store.dispatch(appActions.setViewMood({ mood: type }))
@@ -49,7 +51,11 @@ export class ActiveFilterComponent implements OnInit {
 
   removeTag(filterName: string, value: string) {
     this.store.dispatch(productActions.removeActiveFilterItem({ filterName, value }));
-    this.store.dispatch(productActions.filterProducts({filterBy:this.filterBy}))
+    this.store.dispatch(productActions.filterProducts({ filterBy: this.filterBy }))
+  }
+
+  reset() {
+    this.store.dispatch(productActions.resetActiveFilterItems())
   }
 
 }

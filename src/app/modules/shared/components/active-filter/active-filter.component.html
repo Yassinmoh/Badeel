@@ -7,6 +7,7 @@
       <span>الترتيب والأقسام</span>
     </div>
     <div class="icons">
+      <h1 (click)="reset()" *ngIf="hasActiveFilters" class="reset">إلغاء التصفية </h1>
       <svg (click)="toggleClick('table')"
         [attr.aria-pressed]="(currentViewMood$ | async) === 'table'">
         <use href="#table_icon"></use>

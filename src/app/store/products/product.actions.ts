@@ -14,3 +14,4 @@ export const setSearchTerm= createAction('[Product Search] Set Search Trem',prop
 export const filterProducts = createAction('[Filter] Filter Products',props<{filterBy:any}>())
 export const setCurrentActiveFilterItems = createAction('[Filter] Set Current Active Filter Items',props<{CurrentActiveFilterItems:any}>())
 export const removeActiveFilterItem = createAction('[Filter] Remove Active Filter Item',props<{filterName: string; value: string }>() )
+export const resetActiveFilterItems = createAction('[Filter] Reset Active Filter Items' )
