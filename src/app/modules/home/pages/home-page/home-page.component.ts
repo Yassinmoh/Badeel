@@ -21,7 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [IntroComponent, ActiveFilterComponent, ProductGridCardComponent, ProductRowCardComponent, CommonModule, SharedModule,SpinnerComponent],
+  imports: [IntroComponent, ActiveFilterComponent, ProductGridCardComponent, ProductRowCardComponent, CommonModule, SharedModule, SpinnerComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
 })
@@ -35,11 +35,9 @@ export class HomePageComponent implements OnInit {
   isMobileScreen: boolean = false
   // products$!: Observable<any[]>;
   products: Product[] = []
-  products$!:Observable<Product[]>
+  products$!: Observable<Product[]>
   selectedProduct: any = null
   searchResults$!: Observable<Product[]>;
-  filterBy ={}
-
 
 
   @HostListener('window:resize', ['$event'])
@@ -55,10 +53,9 @@ export class HomePageComponent implements OnInit {
         this.currentViewType = param['view']
       }
     })
-      this.products$ = this.store.select(getAllProducts)
-      this.store.dispatch(productsActions.loadProducts())
-
-
+    this.products$ = this.store.select(getAllProducts)
+    this.store.dispatch(productsActions.loadProducts())
+    this.loadMore()
   }
 
   getFilterdData(filtereProducts: Product[]) {
@@ -78,8 +75,16 @@ export class HomePageComponent implements OnInit {
     this.selectedProduct = null
   }
 
-  filter(e:Event){
-    console.log("Fired",e.target);
-
+  loadMore() {
+    this.productServise.loadMoreProducts().subscribe(products => {
+      // Check if there are no more products to load:
+      if (!products.length) {
+        console.log('No more products to load');
+        return
+      } else {
+        this.products = [...this.products, ...products];
+        this.store.dispatch(productsActions.loadProductsSuccessfuly({ products: this.products }));
+      }
+    });
   }
 }

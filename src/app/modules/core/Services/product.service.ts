@@ -12,6 +12,10 @@ import { map } from 'rxjs';
 export class ProductService {
 
   cachedProducts: Product[] = []
+  PAGE_SIZE = 4
+  lastDocument!: object
+
+
   constructor(private firestore: AngularFirestore) {
     this.loadAndCachedData()
   }
@@ -30,10 +34,30 @@ export class ProductService {
   }
 
   // Fetch product list
-  getProducts(): Observable<Product[]> {
-    return this.firestore.collection('products').get().pipe(
-      map((productsSnapshot) => productsSnapshot.docs.map((doc) => doc.data() as Product))
+  getProducts(startAfter?: any): Observable<Product[]> {
+    let queryFn = (ref: any) => ref.orderBy('productEnName').limit(this.PAGE_SIZE);
+    if (startAfter) {
+      queryFn = ref => ref.orderBy('productEnName').startAfter(startAfter).limit(this.PAGE_SIZE);
+    }
+
+    return this.firestore.collection('products', queryFn).snapshotChanges().pipe(
+      map(actions => {
+        if (actions.length > 0) {
+          // Update the lastDocument with the last document in this batch
+          this.lastDocument = actions[actions.length - 1].payload.doc;
+        }
+        return actions.map(a => {
+          const data = a.payload.doc.data() as Product;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
     );
+  }
+
+  // Load More Products:
+  loadMoreProducts(): Observable<Product[]> {
+    return this.getProducts(this.lastDocument);
   }
 
   // Update product

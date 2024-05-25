@@ -1,5 +1,5 @@
 export interface Product {
-  id?:number;
+  id?:number | string;
   status?: string;
   productArName?: string;
   productEnName?: string;

@@ -1,4 +1,4 @@
-<app-filter-popup (onFilter)="filter($event)" *ngIf="popupService.openFilter | async"></app-filter-popup>
+<app-filter-popup *ngIf="popupService.openFilter | async"></app-filter-popup>
 <section class="homepagee__section">
   <app-intro (onSearch)="updateSearchResults($event)"></app-intro>
   <app-active-filter></app-active-filter>
@@ -16,5 +16,5 @@
       <app-product-row-card [products]="products" (onSelectProduct)="getProductDetails($event)" [isMobileScreen]="isMobileScreen"></app-product-row-card>
     </ng-container>
   </section>
-  <div class="more__btn">إعرض أكثر</div>
+  <div class="more__btn" (click)="loadMore()">إعرض أكثر</div>
 </section>
