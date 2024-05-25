@@ -12,7 +12,7 @@ import { map } from 'rxjs';
 export class ProductService {
 
   cachedProducts: Product[] = []
-  PAGE_SIZE = 4
+  PAGE_SIZE = 12
   lastDocument!: object
 
 
