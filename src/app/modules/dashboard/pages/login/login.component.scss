@@ -38,72 +38,130 @@ section {
     }
   }
 
-  .form-box {
-    z-index: 1;
-    position: relative;
-    width: 92%;
-    margin: 0 auto;
-    background: #fff;
-    border-radius: 10px;
-    height: 70vh;
-    padding: 1rem;
+  .container {
+    .right {
+      width: 100%;
 
-    h2 {
-      text-align: center;
-      padding: 1rem;
-      @include textStyle(26px, 1.5, var(--primary-font), #000, 600);
+      .form-box {
+        z-index: 1;
+        position: relative;
+        width: 92%;
+        margin: 0 auto;
+        background: #fff;
+        border-radius: 10px;
+        height: fit-content;
+        padding: 1rem;
 
-    }
+        h2 {
+          text-align: center;
+          padding: 1rem;
+          @include textStyle(26px, 1.5, var(--primary-font), #000, 600);
 
-    form {
-      margin-top: 2rem;
-      position: relative;
+        }
 
-      .form-field {
-        margin: 1rem 0;
+        form {
+          margin-top: 2rem;
+          position: relative;
 
-        input {
-          width: 100%;
-          outline: none;
-          border: 1px solid gray;
-          padding: 0.9rem;
-          border-radius: 8px;
+          .form-field {
+            margin: 1rem 0;
+
+            input {
+              width: 100%;
+              outline: none;
+              border: 1px solid var(--c-font-2);
+              padding: 0.9rem;
+              border-radius: 8px;
+            }
+          }
+
+          button {
+            width: fit-content;
+            min-width: 150px;
+            padding: 0.8rem 1.5rem;
+            background: var(--c-action);
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            @include textStyle(16px, 1.5, var(--primary-font), var(--c-font-1), 600);
+            border-radius: 8px;
+          }
+        }
+
+        .foot {
+          margin-top: 7rem;
+          border-top: 1px solid gray;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          flex-direction: row-reverse;
+          padding: 1rem 0;
+
+          &>div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.3rem;
+
+            img {
+              width: 40px;
+              height: 40px;
+            }
+          }
         }
       }
-
-      button {
-        width: fit-content;
-        min-width: 150px;
-        padding: 0.8rem 1.5rem;
-        background: var(--c-action);
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        @include textStyle(16px, 1.5, var(--primary-font), var(--c-font-1), 600);
-        border-radius: 8px;
-      }
     }
 
-    .foot{
-      margin-top: 7rem;
-      border-top: 1px solid gray;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      flex-direction: row-reverse;
-      padding: 1rem 0;
-      & > div{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.3rem;
-        img{
-          width: 40px;
-          height: 40px;
-        }
-      }
+    .left {
+      display: none;
     }
   }
 
+}
 
+
+
+@include tabletScreen {
+  :host {
+    section {}
+  }
+}
+
+
+@include DesktopScreen {
+  :host {
+    section {
+
+      .head{
+        padding-left: 4rem;
+        justify-content: flex-end;
+      }
+      .container {
+        width: 100%;
+        padding: 0 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        .right {
+          width: 50%;
+          .form-box{
+            width:60%;
+          }
+        }
+
+        .left {
+          display: block;
+          width: 50%;
+          height: 50vh;
+          background: red;
+        }
+      }
+
+    }
+  }
 }
