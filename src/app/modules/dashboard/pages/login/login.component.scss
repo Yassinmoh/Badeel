@@ -41,6 +41,7 @@ section {
   .container {
     .right {
       width: 100%;
+      z-index: 1000;
 
       .form-box {
         z-index: 1;
@@ -121,23 +122,24 @@ section {
 
 
 
-@include tabletScreen {
-  :host {
-    section {}
-  }
-}
+// @include tabletScreen {
+//   :host {
+//     section {}
+//   }
+// }
 
 
 @include DesktopScreen {
   :host {
     section {
 
-      .head{
+      .head {
         padding-left: 4rem;
         justify-content: flex-end;
       }
+
       .container {
-        width: 100%;
+        width: 77%;
         padding: 0 2rem;
         display: flex;
         align-items: center;
@@ -148,17 +150,35 @@ section {
         transform: translate(-50%, -50%);
 
         .right {
-          width: 50%;
-          .form-box{
-            width:60%;
+          width: 40%;
+
+          .form-box {
+            width: 60%;
           }
         }
 
         .left {
-          display: block;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           width: 50%;
           height: 50vh;
-          background: red;
+          padding: 1rem;
+          z-index: 50;
+
+          .text-box {
+            padding: 1rem;
+            text-align: left;
+            h2 {
+              @include textStyle(30px, 1.5, var(--primary-font), var(--c-action), 600);
+              padding: 0.5rem 0;
+            }
+
+            p {
+              @include textStyle(18px, 1.5, var(--primary-font), var(--c-font-1), 500);
+              padding: 0.5rem 0;
+            }
+          }
         }
       }
 

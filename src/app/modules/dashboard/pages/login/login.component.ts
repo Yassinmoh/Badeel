@@ -12,14 +12,14 @@ import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
       state('start', style({ transform: 'translateX(-100%)' })),
       state('end', style({ transform: 'translateX(0)' })),
       transition('start => end', [
-        animate('1.5s')
+        animate('0.8s')
       ])
     ]),
     trigger('fadeIn', [
       state('hidden', style({ opacity: 0 })),
       state('visible', style({ opacity: 1 })),
       transition('hidden => visible', [
-        animate('1.5s')
+        animate('0.8s')
       ])
     ])
   ]
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit{
       setTimeout(() => {
         this.rightState = 'end';
         this.leftState = 'visible';
-      }, 1500);
+      }, 1000);
     }
   }
 
