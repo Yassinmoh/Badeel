@@ -14,7 +14,7 @@
   </div>
   <div class="left__part">
     <div class="product_img">
-      <img src="../../../../../assets/images/products/tiger.jpeg" alt="product_img">
+      <img [src]="'../../../../../../assets/images/Product/' + product.id+'.jpg?v=1.1.1.1'" alt="product_img">
     </div>
     <div class="btn" (click)="showDetails(product)">
       <span>التفاصيل</span>

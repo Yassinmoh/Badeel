@@ -12,12 +12,12 @@
     <div class="box_body">
       <div class="top-content">
         <div class="img-box">
-          <img src="../../../../../../assets/images/products/tiger.jpeg" alt="product img">
+          <img [src]="'../../../../../../assets/images/Product/' + selectedProduct.id+'.jpg?v=1.1.1.1'" alt="product img">
         </div>
         <div class="product-info">
           <div class="product__status">
-            <svg><use href="#status-A"></use></svg>
-            <span>{{getProductStatus(selectedProduct.status)}}</span>
+            <svg><use [attr.href]="'#status-' + getProductStatus(selectedProduct.status).icon"></use></svg>
+            <span [ngStyle]="{color: getProductStatus(selectedProduct.status).textColor}">{{getProductStatus(selectedProduct.status).name}}</span>
           </div>
           <div class="product__company">
             <h3>المُنتِج</h3>
