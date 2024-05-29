@@ -15,8 +15,6 @@ import { Store } from '@ngrx/store';
 import { ProductState } from '../../../../store/products/product.reducer';
 import { getAllProducts } from '../../../../store/products/product.selectors';
 import * as productsActions from '../../../../store/products/product.actions'
-import { CategoryService } from '../../../core/Services/category.service';
-import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-home-page',

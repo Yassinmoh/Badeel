@@ -1,4 +1,4 @@
-@mixin textStyle($fontsize, $lineheight, $font-family, $fontcolor,$fontweight) {
+@mixin textStyle($fontsize, $lineheight, $font-family, $fontcolor, $fontweight) {
   font-size: $fontsize;
   font-family: $font-family;
   color: $fontcolor;
@@ -10,12 +10,17 @@
   width: 100%;
   outline: 0;
   @include textStyle(19px, 1.5, var(--primary-font), var(--c-offwhite), 500);
-  background:transparent;
-  transition: background-color .2s ease-out,color .2s ease-out;
+  background: transparent;
+  transition: background-color .2s ease-out, color .2s ease-out;
   padding: 8px 12px;
   border: 1px solid var(--c-stroke-gray);
   border-radius: 16px;
   margin-top: 0.5rem;
+}
+
+@mixin navGradient {
+  background: var(--dsh-pink);
+  background: linear-gradient(180deg, var(--dsh-pink) 0%, var(--dsh-danger) 100%);
 }
 
 @mixin MobileScreen {
@@ -41,7 +46,6 @@
     @content;
   }
 }
-
 
 @mixin LargeDesktopScreen {
   @media only screen and (min-width:1700px) {

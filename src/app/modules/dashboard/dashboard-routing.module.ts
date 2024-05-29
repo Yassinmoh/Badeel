@@ -3,19 +3,28 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashHomePageComponent } from './pages/dash-home-page/dash-home-page.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { DashboardLayoutComponent } from '../core/dashboard-layout/dashboard-layout.component';
 
 const routes: Routes = [
   {
-    path:'',
-    component:DashHomePageComponent
-  },
-  {
-    path:'login',
-    component:LoginComponent
-  },
-  {
-    path:'register',
-    component:SignupComponent
+    path: '',
+    component: DashboardLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: DashHomePageComponent
+      },
+
+      {
+        path: 'login',
+        component: LoginComponent
+      },
+
+      {
+        path: 'register',
+        component: SignupComponent
+      }
+    ]
   }
 ];
 
