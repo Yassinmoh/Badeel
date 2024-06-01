@@ -12,21 +12,22 @@ import { reducers, metaReducers } from './store';
 import { provideEffects } from '@ngrx/effects';
 import { ProductsEffects } from './store/products/product.effects';
 import { CategoryEffect } from './store/categories/category.effects';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { authInterceptor } from './modules/core/interceptor/auth.interceptor';
 
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideAnimations(),
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([authInterceptor])),
     provideToastr({ closeButton: false }),
     importProvidersFrom([
-        provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-        provideFirestore(() => getFirestore())
+      provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+      provideFirestore(() => getFirestore())
     ]),
     { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig },
     provideStore(reducers, { metaReducers }),
-    provideEffects([ProductsEffects,CategoryEffect])
-]
+    provideEffects([ProductsEffects, CategoryEffect])
+  ]
 };

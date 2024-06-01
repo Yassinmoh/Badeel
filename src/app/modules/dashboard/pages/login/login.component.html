@@ -8,14 +8,14 @@
     <div [@slideInRight]="rightState" class="right">
       <div class="form-box">
         <h2>Welcome to Badeel dashbord</h2>
-        <form>
+        <form [formGroup]="loginForm">
           <div class="form-field">
-            <input type="email" placeholder="email">
+            <input type="email" formControlName="email" placeholder="email">
           </div>
           <div class="form-field">
-            <input type="password" placeholder="password">
+            <input type="password" formControlName="password" placeholder="password">
           </div>
-          <button>Sign in</button>
+          <button (click)="login($event)">Sign in</button>
         </form>
         <div class="foot">
           <p>Or sign up with</p>

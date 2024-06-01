@@ -4,6 +4,7 @@ import { DashHomePageComponent } from './pages/dash-home-page/dash-home-page.com
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { DashboardLayoutComponent } from '../core/dashboard-layout/dashboard-layout.component';
+import { authGuard } from '../core/guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -12,7 +13,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: DashHomePageComponent
+        component: DashHomePageComponent,
+        canActivate:[authGuard]
       },
 
       {

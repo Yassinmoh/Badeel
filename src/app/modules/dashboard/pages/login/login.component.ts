@@ -1,10 +1,12 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
+import { Component, HostListener, OnInit, Renderer2, inject } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../../../core/Services/auth.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   animations: [
@@ -24,19 +26,27 @@ import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
     ])
   ]
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
 
   rightState = 'start';
   leftState = 'hidden';
   isDesktop = false;
-  constructor(private renderer: Renderer2) {}
+  fb = inject(FormBuilder)
+  authService = inject(AuthService)
+  loginForm!: FormGroup
+
+
+  constructor(private renderer: Renderer2) { }
 
   @HostListener('window:resize', ['$event'])
-  onResize(event:Event) {
+  onResize(event: Event) {
     this.checkScreenSize();
   }
 
   ngOnInit() {
+    this.loginForm =
+      this.fb.group({ email: ['',Validators.required], password: ['',Validators.required] })
+
     this.checkScreenSize();
     if (this.isDesktop) {
       setTimeout(() => {
@@ -52,5 +62,10 @@ export class LoginComponent implements OnInit{
       this.rightState = 'end';
       this.leftState = 'visible';
     }
+  }
+
+  login(e: Event) {
+    e.preventDefault()
+    this.authService.login(this.loginForm.value)
   }
 }
