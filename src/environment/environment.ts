@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  firebaseConfig : {
+  firebaseConfig: {
     apiKey: "AIzaSyBiOqZj5hMqYbwnPuy9jjak40oc3QnP4qI",
     authDomain: "badeel-4ace6.firebaseapp.com",
     projectId: "badeel-4ace6",
@@ -9,11 +9,16 @@ export const environment = {
     appId: "1:521573532508:web:4cd4696e469e9d8bee3799",
     measurementId: "G-Y0LEF354NB"
   },
-  RapidAPIConfig:{
+  RapidAPIConfig: {
 
-    baseAPI:'https://jwt-bearer-auth1.p.rapidapi.com',
-    apiKey:'ce0370d6f5mshd64802fb9408c6ep1912f4jsn68ae615df64a',
-
+    BASE_API: 'https://jwt-bearer-auth1.p.rapidapi.com',
+    OPTIONS: {
+      headers: {
+        'content-type': 'application/json',
+        'X-RapidAPI-Key': `ce0370d6f5mshd64802fb9408c6ep1912f4jsn68ae615df64a`,
+        'X-RapidAPI-Host': `jwt-bearer-auth1.p.rapidapi.com`
+      }
+    }
   }
 };
 
