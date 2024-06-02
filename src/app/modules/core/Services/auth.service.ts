@@ -26,7 +26,7 @@ export class AuthService {
     this.http.post(`${environment.RapidAPIConfig.BASE_API}${'/login'}`, data, this.OPTIONS).pipe(
       tap((res: any) => {
         this.REFRESH_TOKEN = res.refreshToken
-        this.storeToken(res.token)
+        this.storeToken(res)
         this.userAuthenticated.next(true)
         this.currentLoginUser.next(data.email)
         this.getUserName()
@@ -36,8 +36,9 @@ export class AuthService {
     ).subscribe()
   }
 
-  private storeToken(jwt: string) {
-    localStorage.setItem('token', jwt)
+  private storeToken(jwt: any) {
+    localStorage.setItem('token', jwt.token)
+    localStorage.setItem('refresh', jwt.refreshToken)
   }
 
   getUserName() {
@@ -64,20 +65,22 @@ export class AuthService {
   isTokenExpired() {
     let token = localStorage.getItem('JWT_TOKEN')
     if (!token) return;
-
     let decode = jwtDecode(token)
     if (!decode.exp) return;
-
     let expireDate = decode.exp * 1000;
     let now = new Date().getTime()
-
     return expireDate < now
   }
 
-  refreshToken(data:{refreshToken:string,token:string}){
-    this.http.post(`${environment.RapidAPIConfig.BASE_API}${'/refresh'}`, data, this.OPTIONS).pipe(
-      tap()
-    )
+  refreshToken() {
+    const token = localStorage.getItem('token');
+    const refreshToken = localStorage.getItem('refresh');
+    if (!token || !refreshToken) return;
+    this.http.post(`${environment.RapidAPIConfig.BASE_API}${'/refresh'}`,
+      { token, refreshToken },
+      this.OPTIONS).pipe(
+        tap(tokens => this.storeToken(tokens))
+      ).subscribe()
   }
 
 }
