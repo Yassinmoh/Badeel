@@ -1,0 +1,12 @@
+@import 'common';
+:host{
+  direction: rtl;
+}
+header{
+  height: 60px;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  position: fixed;
+  top: 0;
+  background: var(--dsh-bg-color);
+}

@@ -1,0 +1,9 @@
+@import 'common';
+
+div{
+  width:100%;
+  height: 3px;
+  @include navGradient;
+  position: fixed;
+  top: 0;
+}

@@ -7,6 +7,7 @@ import { RouterOutlet } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component';
 import { DashNavbarComponent } from '../dashboard/components/dash-navbar/dash-navbar.component';
+import { DividerComponent } from '../dashboard/components/divider/divider.component';
 
 
 
@@ -21,7 +22,8 @@ import { DashNavbarComponent } from '../dashboard/components/dash-navbar/dash-na
     HeaderComponent,
     SharedModule,
     RouterOutlet,
-    DashNavbarComponent
+    DashNavbarComponent,
+    DividerComponent
   ],
   exports: [FooterComponent, MainLayoutComponent, HeaderComponent,DashboardLayoutComponent]
 })

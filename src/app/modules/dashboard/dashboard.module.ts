@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashNavbarComponent } from './components/dash-navbar/dash-navbar.component';
+import { DividerComponent } from './components/divider/divider.component';
 
 
 @NgModule({
@@ -10,8 +11,9 @@ import { DashNavbarComponent } from './components/dash-navbar/dash-navbar.compon
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    DashNavbarComponent
+    DashNavbarComponent,
+    DividerComponent
   ],
-  exports:[DashNavbarComponent]
+  exports:[DashNavbarComponent,DividerComponent]
 })
 export class DashboardModule { }
