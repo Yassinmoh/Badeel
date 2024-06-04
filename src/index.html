@@ -16,7 +16,7 @@
       rel="stylesheet">
   </head>
 
-  <body>
+  <body class="poem">
     <app-root></app-root>
   </body>
 
@@ -165,4 +165,20 @@
     </svg>
   </div>
 
+  <script>
+    (function (url) {
+        var image = new Image();
+        image.onload = function () {
+            var style = [
+              'font-size: 30px;',
+              'line-height: 100px;',
+              'padding: 4rem;',
+              'background-size: 200px 150px',
+            ].join(' ');
+            setTimeout(console.log.bind(console, '\n%c 🚨🚨 Believe me !, there\'s is nothing important here for you.', style));
+        };
+        // When set a src property to the image you Actually load it
+        image.src = url;
+    })('https://media.gettyimages.com/id/926719206/photo/accident-or-crime-scene-cordon-tape.jpg?s=2048x2048&w=gi&k=20&c=uSZ5RyfnZQ_K43S-pu1mSiYoM4fv47qICW6D7bl-mjg=');
+  </script>
 </html>

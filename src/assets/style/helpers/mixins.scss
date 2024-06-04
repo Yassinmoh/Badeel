@@ -18,7 +18,7 @@
   margin-top: 0.5rem;
 }
 
-@mixin navGradient {
+@mixin sidebarGradient {
   background: var(--dsh-pink);
   background: linear-gradient(180deg, var(--dsh-pink) 0%, var(--dsh-danger) 100%);
 }

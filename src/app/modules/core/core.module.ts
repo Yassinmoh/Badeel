@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component';
 import { DashNavbarComponent } from '../dashboard/components/dash-navbar/dash-navbar.component';
 import { DividerComponent } from '../dashboard/components/divider/divider.component';
+import { SidebarComponent } from '../dashboard/components/sidebar/sidebar.component';
 
 
 
@@ -23,7 +24,8 @@ import { DividerComponent } from '../dashboard/components/divider/divider.compon
     SharedModule,
     RouterOutlet,
     DashNavbarComponent,
-    DividerComponent
+    DividerComponent,
+    SidebarComponent
   ],
   exports: [FooterComponent, MainLayoutComponent, HeaderComponent,DashboardLayoutComponent]
 })
