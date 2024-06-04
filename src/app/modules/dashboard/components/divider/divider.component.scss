@@ -3,7 +3,7 @@
 div{
   width:100%;
   height: 3px;
-  @include navGradient;
+  @include sidebarGradient;
   position: fixed;
   top: 0;
 }
